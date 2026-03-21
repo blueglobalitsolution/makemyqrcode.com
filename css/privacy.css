@@ -1411,7 +1411,7 @@
 
         @media (max-width: 480px) {
             .site-header .brand-logo img {
-                max-width: 100px;
+                max-width: 150px;
             }
         }
 

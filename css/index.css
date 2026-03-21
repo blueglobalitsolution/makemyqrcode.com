@@ -66,6 +66,7 @@
         ::before {
             box-sizing: border-box
         }
+        
 
         @media (prefers-reduced-motion:no-preference) {
             :root {
@@ -686,7 +687,7 @@
             }
 
             .min-h-screen {
-                min-height: 80vh !important;
+                min-height: 10vh!important;
             }
         }
 
@@ -21742,7 +21743,7 @@ readers do not read off random characters that represent icons */
 
         @media (max-width: 480px) {
             .site-header .brand-logo img {
-                max-width: 100px;
+                max-width: 150px;
             }
         }
 
@@ -25408,6 +25409,7 @@ readers do not read off random characters that represent icons */
             width: auto
         }
 
+
         .page-links a:hover,
         .zubuz-navigation a:hover {
             background-color: var(--primary-color);
@@ -25419,18 +25421,19 @@ readers do not read off random characters that represent icons */
             padding-top: 25px;
             overflow: hidden;
             background-repeat: no-repeat;
-            background-position: center bottom
+            background-position: center bottom;
         }
 
         @media (max-width:991px) {
             .zubuz-hero-section {
-                padding-top: 160px
+                padding-top: 160px;
             }
         }
 
         @media (max-width:479px) {
             .zubuz-hero-section {
-                padding-top: 120px
+                padding-top: 120px;
+                margin-top: -300px !important;
             }
         }
 
@@ -25439,23 +25442,23 @@ readers do not read off random characters that represent icons */
             max-width: 1100px;
             margin: 0 auto;
             margin-top: 10px;
-            padding-bottom: 40px
+            padding-bottom: 40px;
         }
 
         @media (max-width:1400px) {
             .zubuz-hero-content.center {
-                max-width: 800px
+                max-width: 800px;
             }
         }
 
         .zubuz-hero-content.center p {
             max-width: 950px;
-            margin: 0 auto 20px
+            margin: 0 auto 20px;
         }
 
         @media (max-width:991px) {
             .zubuz-hero-content.center p {
-                margin: 0 auto 30px
+                margin: 0 auto 30px;
             }
         }
 
@@ -25647,24 +25650,26 @@ readers do not read off random characters that represent icons */
 
         .zubuz-hero-section2 {
             position: relative;
-            padding: 170px 0 130px
+            padding: 170px 0 130px;
         }
 
         @media (max-width:991px) {
             .zubuz-hero-section2 {
-                padding: 160px 0 100px
+                padding: 160px 0 100px;
             }
         }
 
         @media (max-width:767px) {
             .zubuz-hero-section2 {
-                padding: 160px 0 100px
+                padding: 160px 0 100px;
+               margin-top: -300px !important;
             }
         }
 
         @media (max-width:479px) {
             .zubuz-hero-section2 {
-                padding: 120px 0 100px
+                padding: 120px 0 100px;
+                margin-top: -300px !important;
             }
         }
 
@@ -28783,6 +28788,7 @@ readers do not read off random characters that represent icons */
         @media (max-width: 767px) {
             .zubuz-hero-section {
                 padding-top: 50px;
+                margin-top: -300px !important;
             }
 
             .zubuz-hero-content h1 {
@@ -28974,6 +28980,7 @@ readers do not read off random characters that represent icons */
                 background-color: #f6f8fa;
                 padding: 110px 16px 55px;
                 box-sizing: border-box;
+               
             }
 
             .iframe-wrapper {
@@ -28999,8 +29006,9 @@ readers do not read off random characters that represent icons */
             /* Optional: better mobile experience */
             @media (max-width: 768px) {
                 .iframe-container-custom {
-                    padding-top: 80px;
-                    padding-bottom: 30px;
+                          margin-top: -261px !important;
+                    
+                    
                 }
 
                 .iframe-wrapper {
