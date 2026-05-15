@@ -5,6 +5,7 @@ session_start();
 // Set headers for proper response handling
 header('Content-Type: application/json');
 header('Cache-Control: no-cache, must-revalidate');
+header('Access-Control-Allow-Origin: *');
 
 // Configuration
 $counterFile = 'visitor_count.txt';
@@ -28,7 +29,7 @@ function readCounter($file) {
 // Function to write counter data
 function writeCounter($file, $count, $date) {
     $data = $count . '|' . $date;
-    return file_put_contents($file, $data, LOCK_EX);
+    return @file_put_contents($file, $data, LOCK_EX);
 }
 
 // Read current counter data
@@ -42,9 +43,13 @@ $isFirstVisit = !isset($_SESSION[$sessionKey]);
 
 // Increment counter only on first visit
 if ($isFirstVisit) {
-    $currentCount++;
-    writeCounter($counterFile, $currentCount, $today);
-    $_SESSION[$sessionKey] = true; // Mark as visited
+    $newCount = $currentCount + 1;
+    if (writeCounter($counterFile, $newCount, $today) !== false) {
+        $currentCount = $newCount;
+        if (session_status() === PHP_SESSION_ACTIVE) {
+            $_SESSION[$sessionKey] = true; // Mark as visited
+        }
+    }
 }
 
 // Return response

@@ -653,7 +653,7 @@
                 })
                 .catch(error => {
                     console.error('Counter error:', error);
-                    document.getElementById('visit-number').textContent = 'â€”';
+                    document.getElementById('visit-number').textContent = '-';
                 });
         })();
     
