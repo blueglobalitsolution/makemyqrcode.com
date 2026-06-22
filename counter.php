@@ -8,7 +8,7 @@ header('Cache-Control: no-cache, must-revalidate');
 header('Access-Control-Allow-Origin: *');
 
 // Configuration
-$counterFile = 'visitor_count.txt';
+$counterFile = __DIR__ . '/visitor_count.txt';
 $sessionKey = 'visited_today';
 
 // Function to read counter data
