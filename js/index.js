@@ -635,25 +635,15 @@
     
 
 
-         // Visitor Counter Script
+         // Visitor Tracking (invisible — data collected for admin dashboard)
          (function () {
-             // Make sure we only call once per page load
              if (window.visitorCounterCalled) return;
              window.visitorCounterCalled = true;
 
-             // Call PHP endpoint - use absolute path to work from any directory
-             fetch('/counter.php')
-                 .then(response => response.json())
-                 .then(data => {
-                     if (data.success) {
-                         console.log('Visitor count:', data.count);
-                         // Update the visitor counter display
-                         document.getElementById('visit-number').textContent = data.count;
-                     }
-                 })
-                 .catch(error => {
-                     console.error('Counter error:', error);
-                     document.getElementById('visit-number').textContent = '-';
-                 });
+             fetch('https://app.makemyqrcode.com/api/visits/track/', {
+                 method: 'POST',
+                 headers: {'Content-Type': 'application/json'},
+                 body: JSON.stringify({page: window.location.pathname})
+             }).catch(function() {});
          })();
     

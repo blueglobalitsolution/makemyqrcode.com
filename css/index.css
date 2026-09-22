@@ -21555,11 +21555,10 @@ readers do not read off random characters that represent icons */
             }
 
             #visitor-counter {
-                display: flex;
-                align-items: center;
-                margin-left: 10px;
-                flex-shrink: 0;
+                display: none;
             }
+
+
 
             .site-header .menu-block-wrapper .menu-overlay {
                 position: fixed;
@@ -21736,9 +21735,7 @@ readers do not read off random characters that represent icons */
                 max-width: 120px;
             }
 
-            .iframe-container-custom {
-                padding: 80px 12px 40px !important;
-            }
+
         }
 
         @media (max-width: 480px) {
@@ -28815,11 +28812,6 @@ readers do not read off random characters that represent icons */
             
             
             /* Mobile Visitor Counter Tweaks */
-            #visitor-counter {
-                margin: 0 10px !important;
-                font-size: 14px !important;
-            }
-
             /* Mobile Footer Styles */
             .zubuz-footer-top {
                 padding: 20px 0 !important;
@@ -28842,21 +28834,6 @@ readers do not read off random characters that represent icons */
 
             .zubuz-footer-content h2 {
                 font-size: 24px !important;
-            }
-
-            #visitor-counter i {
-                font-size: 16px !important;
-                margin-right: 4px !important;
-            }
-
-            .visitor-badge {
-                width: 40px !important;
-                height: 24px !important;
-            }
-
-            .visitor-badge #visit-number {
-                line-height: 24px !important;
-                font-size: 13px !important;
             }
 
             /* Mobile Menu Link Styling */
@@ -28885,42 +28862,7 @@ readers do not read off random characters that represent icons */
         }
     
 
-                    #visitor-counter {
-                        margin: 20px;
-                        font-weight: 600;
-                        color: #111827;
-                        display: flex;
-                        align-items: center;
-                        font-family: Arial, sans-serif;
-                        font-size: 18px;
-                    }
 
-                    .visitor-badge {
-                        width: 55px;
-                        height: 30px;
-                        overflow: hidden;
-                        display: inline-block;
-                        border-radius: 4px;
-                        position: relative;
-                        background-color: #bd1819;
-                    }
-
-                    .visitor-badge #visit-number {
-                        color: #ffffff;
-                        font-size: 16px;
-                        font-weight: bold;
-                        line-height: 30px;
-                        text-align: center;
-                        display: block;
-                    }
-
-
-
-                    #visitor-counter i {
-                        margin-right: 8px;
-                        color: #000;
-                        font-size: 22px;
-                    }
 
                     /* Base Styles from about_us.html */
                     .brand-logo,
@@ -28948,19 +28890,8 @@ readers do not read off random characters that represent icons */
                         color: var(--white-color)
                     }
 
-                    /* Mobile Alignment Fix (Consolidated) */
+                    /* Force single line layout */
                     @media (max-width: 768px) {
-                        #visitor-counter {
-                            margin: 0 5px;
-                            font-size: 14px;
-                        }
-
-                        #visitor-counter i {
-                            font-size: 16px;
-                            margin-right: 4px;
-                        }
-
-                        /* Force single line layout */
                         .site-navbar {
                             flex-wrap: nowrap !important;
                         }
@@ -28972,49 +28903,9 @@ readers do not read off random characters that represent icons */
                     }
                 
 
-            .iframe-container-custom {
-                min-height: auto;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                background-color: #f6f8fa;
-                padding: 110px 16px 55px;
-                box-sizing: border-box;
-               
-            }
-
-            .iframe-wrapper {
-                width: 100%;
-                margin: -50px;
-                max-width: 1300px;
-                padding-top: 25px;
-                aspect-ratio: 16 / 11;
-                /* auto height based on width */
-                background: #ffffff;
-                border-radius: 16px;
-
-                overflow: hidden;
-                position: relative;
-            }
-
-            .iframe-wrapper iframe {
-                width: 100%;
-                height: 100%;
-                border: none;
-            }
-
-            /* Optional: better mobile experience */
-            @media (max-width: 768px) {
-                .iframe-container-custom {
-                          margin-top: -261px !important;
-                    
-                    
-                }
-
-                .iframe-wrapper {
-                    aspect-ratio: 5 / 25;
-                    margin: -10px;
-                }
+            /* webfiles integration */
+            .zubuz-hero-section {
+                margin-top: 0 !important;
             }
         
 

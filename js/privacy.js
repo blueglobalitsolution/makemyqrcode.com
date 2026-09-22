@@ -50,7 +50,7 @@
             window.visitorCounterCalled = true;
 
             // Call PHP endpoint
-            fetch('counter.php')
+            fetch('/counter.php')
                 .then(response => response.json())
                 .then(data => {
                     if (data.success) {

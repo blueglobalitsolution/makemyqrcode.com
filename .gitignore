@@ -1,0 +1,5 @@
+# Runtime data
+visitor_count.txt
+
+# Let's Encrypt SSL challenge tokens (transient)
+.well-known/acme-challenge/
