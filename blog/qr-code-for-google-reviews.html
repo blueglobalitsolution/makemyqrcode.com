@@ -156,6 +156,282 @@
             color: #bd1819 !important;
         }
 
+        /* Hide mobile-specific elements on desktop */
+        @media (min-width: 992px) {
+            .mobile-menu-trigger,
+            #mobile-menu-trigger,
+            .menu-block-wrapper .menu-block,
+            .menu-block-wrapper .menu-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Header & Responsive Drawer Styles */
+        @media (max-width: 991px) {
+            header.zubuz-header-section {
+                padding: 12px 0 !important;
+            }
+
+            .site-navbar {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+
+            .brand-logo img {
+                height: 36px !important;
+                max-height: 36px !important;
+                width: auto !important;
+            }
+
+            .header-btn,
+            .zubuz-header-btn-wrap {
+                display: none !important;
+            }
+
+            /* Hamburger Trigger Button */
+            .mobile-menu-trigger,
+            #mobile-menu-trigger {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 42px !important;
+                height: 42px !important;
+                border-radius: 8px !important;
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                cursor: pointer !important;
+                margin-left: auto !important;
+                flex-shrink: 0 !important;
+                transition: all 0.2s ease !important;
+                padding: 0 !important;
+            }
+
+            .mobile-menu-trigger:hover,
+            #mobile-menu-trigger:hover {
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+            }
+
+            .mobile-menu-trigger span,
+            #mobile-menu-trigger span {
+                display: block !important;
+                width: 20px !important;
+                height: 2px !important;
+                background-color: #111827 !important;
+                position: relative !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .mobile-menu-trigger span::before,
+            .mobile-menu-trigger span::after,
+            #mobile-menu-trigger span::before,
+            #mobile-menu-trigger span::after {
+                content: '' !important;
+                position: absolute !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 2px !important;
+                background-color: #111827 !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .mobile-menu-trigger span::before,
+            #mobile-menu-trigger span::before {
+                top: -6px !important;
+            }
+
+            .mobile-menu-trigger span::after,
+            #mobile-menu-trigger span::after {
+                top: 6px !important;
+            }
+
+            /* Mobile Backdrop Overlay */
+            .menu-block-wrapper .menu-overlay {
+                position: fixed !important;
+                inset: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                background: rgba(15, 23, 42, 0.6) !important;
+                backdrop-filter: blur(4px) !important;
+                z-index: 99998 !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                visibility: hidden !important;
+                transition: opacity 0.3s ease, visibility 0.3s ease !important;
+                display: block !important;
+            }
+
+            .menu-block-wrapper .menu-overlay.active {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                visibility: visible !important;
+            }
+
+            /* Mobile Drawer */
+            .site-header .menu-block-wrapper .menu-block,
+            .menu-block {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 300px !important;
+                max-width: 85vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                background-color: #ffffff !important;
+                z-index: 99999 !important;
+                box-shadow: 10px 0 35px rgba(0, 0, 0, 0.2) !important;
+                transform: translateX(-100%) !important;
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                overflow: hidden !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            .site-header .menu-block-wrapper .menu-block.active,
+            .menu-block.active {
+                transform: translateX(0) !important;
+            }
+
+            /* Drawer Header */
+            .mobile-menu-head {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 16px 20px !important;
+                border-bottom: 1px solid #f1f5f9 !important;
+                background: #ffffff !important;
+                flex-shrink: 0 !important;
+                height: auto !important;
+            }
+
+            .mobile-drawer-logo img {
+                height: 30px !important;
+                width: auto !important;
+                max-width: 150px !important;
+            }
+
+            .mobile-menu-close {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 50% !important;
+                background: #f1f5f9 !important;
+                border: none !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 24px !important;
+                line-height: 1 !important;
+                color: #475569 !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                padding: 0 !important;
+            }
+
+            .mobile-menu-close:hover {
+                background: #e2e8f0 !important;
+                color: #bd1819 !important;
+            }
+
+            /* Drawer Nav Items */
+            .site-menu-main {
+                flex: 1 !important;
+                overflow-y: auto !important;
+                padding: 16px 14px !important;
+                margin: 0 !important;
+                list-style: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 6px !important;
+            }
+
+            .site-menu-main li {
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+
+            .site-menu-main li a.nav-link-item {
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                color: #1e293b !important;
+                text-decoration: none !important;
+                border-radius: 8px !important;
+                border: none !important;
+                height: auto !important;
+                line-height: 1.4 !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .site-menu-main li a.nav-link-item:hover,
+            .site-menu-main li a.nav-link-item:active {
+                background: #f8fafc !important;
+                color: #bd1819 !important;
+            }
+
+            .mobile-auth-btns {
+                margin-top: 28px !important;
+                padding-top: 20px !important;
+                border-top: 1px solid #e2e8f0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            .mobile-login-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                font-weight: 700 !important;
+                font-size: 15px !important;
+                color: #bd1819 !important;
+                background: #fef2f2 !important;
+                border: 1px solid #fecaca !important;
+                text-decoration: none !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .mobile-login-btn:hover {
+                background: #fee2e2 !important;
+                color: #991b1b !important;
+            }
+
+            .mobile-signup-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                font-weight: 700 !important;
+                font-size: 15px !important;
+                color: #ffffff !important;
+                background: linear-gradient(135deg, #bd1819 0%, #a31213 100%) !important;
+                border: none !important;
+                box-shadow: 0 4px 12px rgba(189, 24, 25, 0.25) !important;
+                text-decoration: none !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .mobile-signup-btn:hover {
+                background: linear-gradient(135deg, #a31213 0%, #890c0d 100%) !important;
+                box-shadow: 0 6px 16px rgba(189, 24, 25, 0.35) !important;
+                color: #ffffff !important;
+            }
+        }
+
         /* Custom Premium Reference Footer Style - White & Red Combination */
         .custom-premium-footer {
             background-color: #ffffff !important;
@@ -350,31 +626,29 @@
                     <div class="menu-overlay"></div>
                     <nav class="menu-block" id="append-menu-header">
                         <div class="mobile-menu-head">
-                            <div class="go-back">
-                                <i class="fa fa-angle-left"></i>
+                            <div class="mobile-drawer-logo">
+                                <a href="../index.html">
+                                    <img src="../images/logo/make-my-qr-code.png" alt="Make My QR Code">
+                                </a>
                             </div>
-                            <div class="current-menu-title"></div>
-                            <div class="mobile-menu-close">&times;</div>
+                            <button type="button" class="mobile-menu-close" aria-label="Close Menu">&times;</button>
                         </div>
                         <ul class="site-menu-main">
-                            <li class="nav-item d-lg-none">
+                            <li class="nav-item">
                                 <a href="../index.html" class="nav-link-item">Home</a>
                             </li>
-                            <li class="nav-item d-lg-none">
+                            <li class="nav-item">
                                 <a href="../about-qr-code-generator.html" class="nav-link-item">About Us</a>
                             </li>
-                            <li class="nav-item d-lg-none">
+                            <li class="nav-item">
                                 <a href="../blog.html" class="nav-link-item">Blog</a>
                             </li>
-                            <li class="nav-item d-lg-none">
-<a href="../privacy-policy-qr-code-tool.html" class="nav-link-item">Privacy Policy</a>
-                                <a href="https://app.makemyqrcode.com/login" class="nav-link-item">Login</a>
+                            <li class="nav-item">
+                                <a href="../privacy-policy-qr-code-tool.html" class="nav-link-item">Privacy Policy</a>
                             </li>
-                            <li class="nav-item d-lg-none">
-                                <a href="https://app.makemyqrcode.com/login" class="nav-link-item" style="color: var(--primary-color); font-weight: bold;">Login</a>
-                            </li>
-                            <li class="nav-item d-lg-none">
-                                <a href="https://app.makemyqrcode.com/register" class="nav-link-item" style="color: var(--primary-color); font-weight: bold;">Sign Up</a>
+                            <li class="mobile-auth-btns">
+                                <a href="https://app.makemyqrcode.com/login" class="mobile-login-btn">Login</a>
+                                <a href="https://app.makemyqrcode.com/register" class="mobile-signup-btn">Sign Up</a>
                             </li>
                         </ul>
                     </nav>
