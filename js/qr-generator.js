@@ -123,6 +123,8 @@ const ICONS = {
 let downloading = null;
 let copying = false;
 let leadCaptured = false;
+let leadModalOptional = false;
+let leadModalShown = false;
 const LEAD_API_URL = 'https://app.makemyqrcode.com/api/leads/capture/';
 
 function generateLogoDataUrl(svgTemplate, fgColor) {
@@ -271,7 +273,7 @@ function renderDataTypeInput() {
         <div class="relative group">
           <input type="url" id="input-url" placeholder="https://yourlink.com" value="${c.url}"
             class="w-full bg-white border border-[#f3f3f3] focus:border-[#bd1819] focus:outline-none focus:ring-4 focus:ring-[#bd1819]/25 rounded-[2px] py-4 px-5 text-lg transition-all text-[#000000] placeholder:text-[#666666]"/>
-          <button id="btn-clear-url" class="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-[#f3f3f3] rounded-[2px] text-[#666666] transition-colors">
+          <button id="btn-clear-url" aria-label="Clear this field" class="absolute right-4 top-1/2 -translate-y-1/2 p-1 hover:bg-[#f3f3f3] rounded-[2px] text-[#666666] transition-colors">
             ${svgIcon(ICONS.refresh, 20)}
           </button>
         </div>
@@ -546,10 +548,41 @@ function bindInputEvents() {
   });
 }
 
+/* Leaflet is only needed for the "Location" QR type, so it is loaded on demand
+   instead of blocking the first paint of the homepage. */
+let leafletPromise = null;
+function loadLeaflet() {
+  if (window.L) return Promise.resolve();
+  if (leafletPromise) return leafletPromise;
+
+  leafletPromise = new Promise((resolve, reject) => {
+    const css = document.createElement('link');
+    css.rel = 'stylesheet';
+    css.href = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(css);
+
+    const script = document.createElement('script');
+    script.src = 'https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    script.async = true;
+    script.onload = () => resolve();
+    script.onerror = () => { leafletPromise = null; reject(new Error('Leaflet failed to load')); };
+    document.body.appendChild(script);
+  });
+  return leafletPromise;
+}
+
 function initMap() {
   const container = document.getElementById('map-container');
   if (!container) return;
   container.innerHTML = '';
+
+  // Leaflet may not be loaded yet - load it, then draw the map.
+  if (!window.L) {
+    loadLeaflet().then(() => initMap()).catch(() => {
+      container.innerHTML = '<p style="padding:16px;font-size:14px;color:#666">Map could not be loaded. Enter coordinates manually.</p>';
+    });
+    return;
+  }
 
   const lat = parseFloat(state.location.latitude) || 51.049259;
   const lng = parseFloat(state.location.longitude) || 13.73836;
@@ -800,14 +833,15 @@ function downloadQR(extension) {
   const svg = document.querySelector('#qr-desktop svg, #qr-mobile svg');
   if (!svg) return;
 
-  if (!leadCaptured) {
-    downloading = extension;
-    updateDownloadButtons();
-    showLeadModal(extension);
-    return;
-  }
-
+  // Option A: the download is always immediate and free - no details required.
   performDownload(extension);
+
+  // Afterwards, optionally offer to stay in touch. This never blocks the file,
+  // which has already been saved by the line above.
+  if (!leadCaptured && !leadModalShown) {
+    leadModalShown = true;
+    setTimeout(() => showLeadModal(extension, true), 700);
+  }
 }
 
 async function copyToClipboard() {
@@ -961,11 +995,24 @@ function injectLeadModal() {
   document.body.appendChild(wrapper.firstChild);
 }
 
-function showLeadModal(extension) {
+function showLeadModal(extension, optional = false) {
   pendingDownloadExt = extension;
+  leadModalOptional = optional;
   injectLeadModal();
 
   const overlay = document.getElementById('lead-modal-overlay');
+
+  if (optional) {
+    const title = overlay.querySelector('.lead-modal-title');
+    const sub = overlay.querySelector('.lead-modal-subtitle');
+    const footer = overlay.querySelector('.lead-modal-footer');
+    const submitText = document.getElementById('lead-submit-text');
+    if (title) title.textContent = 'Your download has started';
+    if (sub) sub.textContent = 'Optional: add your details and we will send occasional QR code tips. Your file is already saved.';
+    if (footer) footer.textContent = 'No thanks? Just close this window - nothing is missing from your download.';
+    if (submitText) submitText.textContent = 'Send me QR tips';
+  }
+
   overlay.style.display = 'flex';
 
   document.getElementById('lead-modal-close').onclick = () => {
@@ -1035,10 +1082,13 @@ async function submitLead() {
 
     leadCaptured = true;
     document.getElementById('lead-modal-overlay').style.display = 'none';
-    if (pendingDownloadExt) {
+    // Only trigger a download here when the modal was blocking one (legacy
+    // gate). In the optional flow the file was already saved before the
+    // prompt appeared, so we must not download a second time.
+    if (!leadModalOptional && pendingDownloadExt) {
       performDownload(pendingDownloadExt);
-      pendingDownloadExt = null;
     }
+    pendingDownloadExt = null;
   } catch (err) {
     showLeadError(err.message);
     submitBtn.disabled = false;
@@ -1176,7 +1226,26 @@ function init() {
     }
   });
 
+  // Deep link support: /?type=wifi preselects that QR type.
+  // Used by the "qr code for ..." landing pages.
+  try {
+    const requestedType = new URLSearchParams(window.location.search).get('type');
+    if (requestedType) {
+      const targetBtn = document.querySelector('.data-type-btn[data-type="' + requestedType + '"]');
+      if (targetBtn) {
+        state.dataType = requestedType;
+        updateDataTypeTabs();
+        renderDataTypeInput();
+        targetBtn.scrollIntoView({ block: 'center', behavior: 'smooth' });
+      }
+    }
+  } catch (e) { /* ignore malformed query strings */ }
+
   updateQR();
 }
 
-document.addEventListener('DOMContentLoaded', init);
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', init);
+} else {
+  init();
+}

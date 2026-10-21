@@ -6,29 +6,51 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1MKNEGPCE"></script>
+    <!-- Analytics + Ads are loaded after first paint so they never compete
+         with the hero for the main thread. Historically these three scripts
+         accounted for ~400 KB of the mobile payload. -->
     <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
-        gtag('config', 'G-J1MKNEGPCE');
+    (function () {
+        function boot() {
+            /* Google tag (gtag.js) */
+            var g = document.createElement('script');
+            g.async = true;
+            g.src = 'https://www.googletagmanager.com/gtag/js?id=G-J1MKNEGPCE';
+            document.head.appendChild(g);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag() { dataLayer.push(arguments); }
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', 'G-J1MKNEGPCE');
+
+            /* Google Tag Manager */
+            (function (w, d, s, l, i) {
+                w[l] = w[l] || []; w[l].push({
+                    'gtm.start': new Date().getTime(), event: 'gtm.js'
+                }); var f = d.getElementsByTagName(s)[0],
+                    j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                        'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+            })(window, document, 'script', 'dataLayer', 'GTM-5HWX75PW');
+
+            /* Google AdSense */
+            var a = document.createElement('script');
+            a.async = true;
+            a.crossOrigin = 'anonymous';
+            a.src = 'https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849555045898466';
+            document.head.appendChild(a);
+        }
+        function schedule() {
+            if ('requestIdleCallback' in window) {
+                requestIdleCallback(boot, { timeout: 3000 });
+            } else {
+                setTimeout(boot, 1200);
+            }
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule);
+    })();
     </script>
-
-
-    <!-- Google Tag Manager -->
-    <script>(function (w, d, s, l, i) {
-            w[l] = w[l] || []; w[l].push({
-                'gtm.start':
-                    new Date().getTime(), event: 'gtm.js'
-            }); var f = d.getElementsByTagName(s)[0],
-                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-        })(window, document, 'script', 'dataLayer', 'GTM-5HWX75PW');</script>
-
-    <!-- Google Adsense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8849555045898466"
-        crossorigin="anonymous"></script>
 
     <!-- End Google Tag Manager -->
 
@@ -68,37 +90,22 @@
 
     <!--- End favicon-->
 
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Raleway:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://api.fontshare.com">
-    <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    fontFamily: {
-                        satoshi: ['Satoshi', 'sans-serif'],
-                    },
-                    colors: {
-                        brand: {
-                            primary: '#bd1819',
-                            secondary: '#ff9500',
-                            ink: '#000000',
-                            muted: '#666666',
-                            border: '#f3f3f3',
-                            surface: '#ffffff',
-                            dark: '#131313',
-                        },
-                    },
-                    borderRadius: {
-                        design: '2px',
-                    },
-                },
-            },
-        };
-    </script>
+    <link rel="preload" as="font" type="font/woff2" crossorigin
+        href="https://cdn.fontshare.com/wf/LAFFD4SDUCDVQEXFPDC7C53EQ4ZELWQI/PXCT3G6LO6ICM5I3NTYENYPWJAECAWDD/GHM6WVH6MILNYOOCXHXB5GTSGNTMGXZR.woff2">
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Raleway:wght@600;700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Raleway:wght@600;700&display=swap"></noscript>
+    <link rel="preload" as="style" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"
+        onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700&display=swap"></noscript>
+    <!-- Tailwind (compiled locally - see tailwind.config.js) -->
+    <style>
+/* Tailwind utilities (inlined to remove one render-blocking request) */
+*,:after,:before{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgba(59,130,246,.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/*! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com*/*,:after,:before{box-sizing:border-box;border:0 solid #e5e7eb}:after,:before{--tw-content:""}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;-o-tab-size:4;tab-size:4;font-family:ui-sans-serif,system-ui,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol,Noto Color Emoji;font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0}fieldset,legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::-moz-placeholder,textarea::-moz-placeholder{opacity:1;color:#9ca3af}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.\!container{width:100%!important}.container{width:100%}@media (min-width:640px){.\!container{max-width:640px!important}.container{max-width:640px}}@media (min-width:768px){.\!container{max-width:768px!important}.container{max-width:768px}}@media (min-width:1024px){.\!container{max-width:1024px!important}.container{max-width:1024px}}@media (min-width:1280px){.\!container{max-width:1280px!important}.container{max-width:1280px}}@media (min-width:1536px){.\!container{max-width:1536px!important}.container{max-width:1536px}}.visible{visibility:visible}.invisible{visibility:hidden}.static{position:static}.fixed{position:fixed}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.inset-0{inset:0}.bottom-4{bottom:1rem}.left-4{left:1rem}.right-4{right:1rem}.top-1\/2{top:50%}.top-\[160px\]{top:160px}.z-0{z-index:0}.z-10{z-index:10}.mx-auto{margin-left:auto;margin-right:auto}.mb-0{margin-bottom:0}.mb-1{margin-bottom:.25rem}.mb-12{margin-bottom:3rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:.5rem}.mb-3{margin-bottom:.75rem}.mb-4{margin-bottom:1rem}.mb-5{margin-bottom:1.25rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.ms-2{margin-inline-start:.5rem}.ms-3{margin-inline-start:.75rem}.ms-auto{margin-inline-start:auto}.mt-1{margin-top:.25rem}.mt-2{margin-top:.5rem}.mt-4{margin-top:1rem}.mt-5{margin-top:1.25rem}.mt-6{margin-top:1.5rem}.block{display:block}.inline-block{display:inline-block}.inline{display:inline}.flex{display:flex}.inline-flex{display:inline-flex}.table{display:table}.grid{display:grid}.contents{display:contents}.hidden{display:none}.aspect-square{aspect-ratio:1/1}.h-10{height:2.5rem}.h-4{height:1rem}.h-56{height:14rem}.h-6{height:1.5rem}.h-\[300px\]{height:300px}.h-\[30px\]{height:30px}.h-\[40px\]{height:40px}.h-full{height:100%}.min-h-\[100px\]{min-height:100px}.min-h-\[120px\]{min-height:120px}.w-1\/3{width:33.333333%}.w-10{width:2.5rem}.w-11{width:2.75rem}.w-4{width:1rem}.w-6{width:1.5rem}.w-\[30px\]{width:30px}.w-\[40px\]{width:40px}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-3xl{max-width:48rem}.max-w-4xl{max-width:56rem}.max-w-5xl{max-width:64rem}.max-w-\[1440px\]{max-width:1440px}.max-w-\[400px\]{max-width:400px}.max-w-full{max-width:100%}.flex-1{flex:1 1 0%}.flex-shrink{flex-shrink:1}.flex-shrink-0{flex-shrink:0}.flex-grow,.grow{flex-grow:1}.-translate-y-1\/2{--tw-translate-y:-50%}.-translate-y-1\/2,.translate-x-1{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.translate-x-1{--tw-translate-x:0.25rem}.translate-x-6{--tw-translate-x:1.5rem}.transform,.translate-x-6{transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}@keyframes pulse{50%{opacity:.5}}.animate-pulse{animation:pulse 2s cubic-bezier(.4,0,.6,1) infinite}.cursor-pointer{cursor:pointer}.resize-y{resize:vertical}.resize{resize:both}.grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.flex-col{flex-direction:column}.flex-wrap{flex-wrap:wrap}.items-center{align-items:center}.justify-start{justify-content:flex-start}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-1{gap:.25rem}.gap-2{gap:.5rem}.gap-3{gap:.75rem}.gap-4{gap:1rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-x-12{-moz-column-gap:3rem;column-gap:3rem}.gap-y-6{row-gap:1.5rem}.-space-x-3>:not([hidden])~:not([hidden]){--tw-space-x-reverse:0;margin-right:calc(-.75rem*var(--tw-space-x-reverse));margin-left:calc(-.75rem*(1 - var(--tw-space-x-reverse)))}.space-y-4>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem*var(--tw-space-y-reverse))}.space-y-6>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem*var(--tw-space-y-reverse))}.space-y-8>:not([hidden])~:not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem*(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem*var(--tw-space-y-reverse))}.overflow-hidden{overflow:hidden}.whitespace-nowrap{white-space:nowrap}.rounded{border-radius:.25rem}.rounded-2xl{border-radius:1rem}.rounded-\[2px\],.rounded-design{border-radius:2px}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-b-2{border-bottom-width:2px}.border-t{border-top-width:1px}.border-\[\#bd1819\]{--tw-border-opacity:1;border-color:rgb(189 24 25/var(--tw-border-opacity,1))}.border-\[\#f3f3f3\]{--tw-border-opacity:1;border-color:rgb(243 243 243/var(--tw-border-opacity,1))}.border-gray-300{--tw-border-opacity:1;border-color:rgb(209 213 219/var(--tw-border-opacity,1))}.bg-\[\#bd1819\]{--tw-bg-opacity:1;background-color:rgb(189 24 25/var(--tw-bg-opacity,1))}.bg-\[\#e5e5e5\]{--tw-bg-opacity:1;background-color:rgb(229 229 229/var(--tw-bg-opacity,1))}.bg-\[\#f3f3f3\]{--tw-bg-opacity:1;background-color:rgb(243 243 243/var(--tw-bg-opacity,1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.bg-white\/80{background-color:hsla(0,0%,100%,.8)}.object-contain{-o-object-fit:contain;object-fit:contain}.object-cover{-o-object-fit:cover;object-fit:cover}.p-0{padding:0}.p-1{padding:.25rem}.p-2{padding:.5rem}.p-3{padding:.75rem}.p-4{padding:1rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.p-\[5px\]{padding:5px}.px-1{padding-left:.25rem;padding-right:.25rem}.px-2{padding-left:.5rem;padding-right:.5rem}.px-3{padding-left:.75rem;padding-right:.75rem}.px-4{padding-left:1rem;padding-right:1rem}.px-5{padding-left:1.25rem;padding-right:1.25rem}.py-12{padding-top:3rem;padding-bottom:3rem}.py-2{padding-top:.5rem;padding-bottom:.5rem}.py-2\.5{padding-top:.625rem;padding-bottom:.625rem}.py-3{padding-top:.75rem;padding-bottom:.75rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-12{padding-bottom:3rem}.pt-4{padding-top:1rem}.pt-\[160px\]{padding-top:160px}.text-left{text-align:left}.text-center{text-align:center}.font-mono{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace}.font-satoshi{font-family:Satoshi,sans-serif}.text-4xl{font-size:2.25rem;line-height:2.5rem}.text-5xl{font-size:3rem;line-height:1}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:.75rem;line-height:1rem}.font-bold{font-weight:700}.font-medium{font-weight:500}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.capitalize{text-transform:capitalize}.italic{font-style:italic}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.text-\[\#000000\]{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-\[\#666666\]{--tw-text-opacity:1;color:rgb(102 102 102/var(--tw-text-opacity,1))}.text-\[\#bd1819\]{--tw-text-opacity:1;color:rgb(189 24 25/var(--tw-text-opacity,1))}.text-black{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.text-blue-500{--tw-text-opacity:1;color:rgb(59 130 246/var(--tw-text-opacity,1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81/var(--tw-text-opacity,1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55/var(--tw-text-opacity,1))}.text-green-600{--tw-text-opacity:1;color:rgb(22 163 74/var(--tw-text-opacity,1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255/var(--tw-text-opacity,1))}.shadow{--tw-shadow:0 1px 3px 0 rgba(0,0,0,.1),0 1px 2px -1px rgba(0,0,0,.1);--tw-shadow-colored:0 1px 3px 0 var(--tw-shadow-color),0 1px 2px -1px var(--tw-shadow-color)}.shadow,.shadow-lg{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.shadow-lg{--tw-shadow:0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);--tw-shadow-colored:0 10px 15px -3px var(--tw-shadow-color),0 4px 6px -4px var(--tw-shadow-color)}.shadow-sm{--tw-shadow:0 1px 2px 0 rgba(0,0,0,.05);--tw-shadow-colored:0 1px 2px 0 var(--tw-shadow-color);box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.outline{outline-style:solid}.blur{--tw-blur:blur(8px)}.blur,.drop-shadow{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.drop-shadow{--tw-drop-shadow:drop-shadow(0 1px 2px rgba(0,0,0,.1)) drop-shadow(0 1px 1px rgba(0,0,0,.06))}.filter{filter:var(--tw-blur) var(--tw-brightness) var(--tw-contrast) var(--tw-grayscale) var(--tw-hue-rotate) var(--tw-invert) var(--tw-saturate) var(--tw-sepia) var(--tw-drop-shadow)}.backdrop-blur-md{--tw-backdrop-blur:blur(12px)}.backdrop-blur-md,.backdrop-filter{-webkit-backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia);backdrop-filter:var(--tw-backdrop-blur) var(--tw-backdrop-brightness) var(--tw-backdrop-contrast) var(--tw-backdrop-grayscale) var(--tw-backdrop-hue-rotate) var(--tw-backdrop-invert) var(--tw-backdrop-opacity) var(--tw-backdrop-saturate) var(--tw-backdrop-sepia)}.transition{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,-webkit-backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter;transition-property:color,background-color,border-color,text-decoration-color,fill,stroke,opacity,box-shadow,transform,filter,backdrop-filter,-webkit-backdrop-filter;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-all{transition-property:all;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-colors{transition-property:color,background-color,border-color,text-decoration-color,fill,stroke;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-shadow{transition-property:box-shadow;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.transition-transform{transition-property:transform;transition-timing-function:cubic-bezier(.4,0,.2,1);transition-duration:.15s}.duration-500{transition-duration:.5s}.ease-in-out{transition-timing-function:cubic-bezier(.4,0,.2,1)}.selection\:bg-\[\#bd1819\]\/60 ::-moz-selection{background-color:rgba(189,24,25,.6)}.selection\:bg-\[\#bd1819\]\/60 ::selection{background-color:rgba(189,24,25,.6)}.selection\:bg-\[\#bd1819\]\/60::-moz-selection{background-color:rgba(189,24,25,.6)}.selection\:bg-\[\#bd1819\]\/60::selection{background-color:rgba(189,24,25,.6)}.placeholder\:text-\[\#666666\]::-moz-placeholder{--tw-text-opacity:1;color:rgb(102 102 102/var(--tw-text-opacity,1))}.placeholder\:text-\[\#666666\]::placeholder{--tw-text-opacity:1;color:rgb(102 102 102/var(--tw-text-opacity,1))}.hover\:border-\[\#bd1819\]:hover{--tw-border-opacity:1;border-color:rgb(189 24 25/var(--tw-border-opacity,1))}.hover\:bg-\[\#a31213\]:hover{--tw-bg-opacity:1;background-color:rgb(163 18 19/var(--tw-bg-opacity,1))}.hover\:bg-\[\#e5e5e5\]:hover{--tw-bg-opacity:1;background-color:rgb(229 229 229/var(--tw-bg-opacity,1))}.hover\:bg-\[\#f3f3f3\]:hover{--tw-bg-opacity:1;background-color:rgb(243 243 243/var(--tw-bg-opacity,1))}.hover\:bg-white:hover{--tw-bg-opacity:1;background-color:rgb(255 255 255/var(--tw-bg-opacity,1))}.hover\:text-\[\#000000\]:hover{--tw-text-opacity:1;color:rgb(0 0 0/var(--tw-text-opacity,1))}.hover\:underline:hover{text-decoration-line:underline}.hover\:shadow-md:hover{--tw-shadow:0 4px 6px -1px rgba(0,0,0,.1),0 2px 4px -2px rgba(0,0,0,.1);--tw-shadow-colored:0 4px 6px -1px var(--tw-shadow-color),0 2px 4px -2px var(--tw-shadow-color)}.hover\:shadow-md:hover,.hover\:shadow-xl:hover{box-shadow:var(--tw-ring-offset-shadow,0 0 #0000),var(--tw-ring-shadow,0 0 #0000),var(--tw-shadow)}.hover\:shadow-xl:hover{--tw-shadow:0 20px 25px -5px rgba(0,0,0,.1),0 8px 10px -6px rgba(0,0,0,.1);--tw-shadow-colored:0 20px 25px -5px var(--tw-shadow-color),0 8px 10px -6px var(--tw-shadow-color)}.focus\:border-\[\#bd1819\]:focus{--tw-border-opacity:1;border-color:rgb(189 24 25/var(--tw-border-opacity,1))}.focus\:outline-none:focus{outline:2px solid transparent;outline-offset:2px}.focus\:ring-2:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(2px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\:ring-2:focus,.focus\:ring-4:focus{box-shadow:var(--tw-ring-offset-shadow),var(--tw-ring-shadow),var(--tw-shadow,0 0 #0000)}.focus\:ring-4:focus{--tw-ring-offset-shadow:var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);--tw-ring-shadow:var(--tw-ring-inset) 0 0 0 calc(4px + var(--tw-ring-offset-width)) var(--tw-ring-color)}.focus\:ring-\[\#bd1819\]:focus{--tw-ring-opacity:1;--tw-ring-color:rgb(189 24 25/var(--tw-ring-opacity,1))}.focus\:ring-\[\#bd1819\]\/25:focus{--tw-ring-color:rgba(189,24,25,.25)}.focus\:ring-offset-2:focus{--tw-ring-offset-width:2px}.active\:scale-\[0\.98\]:active{--tw-scale-x:0.98;--tw-scale-y:0.98;transform:translate(var(--tw-translate-x),var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y))}.disabled\:cursor-not-allowed:disabled{cursor:not-allowed}.disabled\:bg-\[\#f3f3f3\]:disabled{--tw-bg-opacity:1;background-color:rgb(243 243 243/var(--tw-bg-opacity,1))}.disabled\:text-\[\#666666\]:disabled{--tw-text-opacity:1;color:rgb(102 102 102/var(--tw-text-opacity,1))}@media not all and (min-width:1024px){.max-lg\:hidden{display:none}}@media not all and (min-width:640px){.max-sm\:hidden{display:none}}@media (min-width:640px){.sm\:hidden{display:none}.sm\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}}@media (min-width:768px){.md\:col-span-2{grid-column:span 2/span 2}.md\:grid-cols-1{grid-template-columns:repeat(1,minmax(0,1fr))}.md\:grid-cols-2{grid-template-columns:repeat(2,minmax(0,1fr))}.md\:grid-cols-3{grid-template-columns:repeat(3,minmax(0,1fr))}.md\:grid-cols-5{grid-template-columns:repeat(5,minmax(0,1fr))}.md\:gap-2{gap:.5rem}.md\:p-8{padding:2rem}.md\:px-2{padding-left:.5rem;padding-right:.5rem}.md\:px-8{padding-left:2rem;padding-right:2rem}.md\:pb-20{padding-bottom:5rem}.md\:text-2xl{font-size:1.5rem;line-height:2rem}.md\:text-6xl{font-size:3.75rem;line-height:1}.md\:text-7xl{font-size:4.5rem;line-height:1}.md\:text-lg{font-size:1.125rem;line-height:1.75rem}}@media (min-width:1024px){.lg\:col-span-12{grid-column:span 12/span 12}.lg\:col-span-4{grid-column:span 4/span 4}.lg\:col-span-8{grid-column:span 8/span 8}.lg\:hidden{display:none}.lg\:grid-cols-10{grid-template-columns:repeat(10,minmax(0,1fr))}.lg\:grid-cols-12{grid-template-columns:repeat(12,minmax(0,1fr))}.lg\:gap-12{gap:3rem}}@media (min-width:1280px){.xl\:px-12{padding-left:3rem;padding-right:3rem}}
+</style>
     <!-- End google font  -->
 
     <!-- Organization -->
@@ -140,7 +147,7 @@
             }
             </script>
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=20261021d">
     <style>
         /* Custom premium UI enhancements for the header and Login button */
         header.zubuz-header-section {
@@ -174,11 +181,6 @@
             width: 100% !important;
         }
 
-        .brand-logo img {
-            height: 42px !important;
-            max-height: 42px !important;
-            width: auto !important;
-        }
 
         .zubuz-login-btn-red {
             background-color: #bd1819 !important;
@@ -245,11 +247,6 @@
                 width: 100% !important;
             }
 
-            .brand-logo img {
-                height: 36px !important;
-                max-height: 36px !important;
-                width: auto !important;
-            }
 
             .header-btn,
             .zubuz-header-btn-wrap,
@@ -740,7 +737,7 @@
                 <!-- Brand Logo-->
                 <div class="brand-logo">
                     <a href="https://makemyqrcode.com/">
-                        <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
+                        <img loading="eager" width="1400" height="306" src="images/logo/make-my-qr-code.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
                     </a>
                 </div>
                 <div class="menu-block-wrapper">
@@ -749,14 +746,14 @@
                         <div class="mobile-menu-head">
                             <div class="mobile-drawer-logo">
                                 <a href="https://makemyqrcode.com/">
-                                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code">
+                                    <img loading="lazy" decoding="async" width="1400" height="306" src="images/logo/make-my-qr-code.webp" alt="Make My QR Code">
                                 </a>
                             </div>
                             <button type="button" class="mobile-menu-close" aria-label="Close Menu">&times;</button>
                         </div>
                         <ul class="site-menu-main">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link-item">Home</a>
+                                <a href="/" class="nav-link-item">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="about-qr-code-generator.html" class="nav-link-item">About Us</a>
@@ -794,17 +791,7 @@
 
 
 
-                <div id="visitor-counter">
-                    <i class="fas fa-users"></i>
-
-                    <!-- NUMBER ONLY -->
-                    <div class="visitor-badge">
-                        <span id="visit-number">0</span>
-                    </div>
-
-                </div>
-
-                <!-- mobile menu trigger -->
+<!-- mobile menu trigger -->
                 <div id="mobile-menu-trigger" class="mobile-menu-trigger light">
                     <span></span>
                 </div>
@@ -863,7 +850,7 @@
                         <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg> Event
                     </button>
                     <button data-type="crypto" class="data-type-btn w-full flex justify-center items-center gap-1 md:gap-2 px-1 md:px-2 py-2.5 rounded-[2px] font-medium text-sm transition-all whitespace-nowrap bg-white text-[#666666] hover:bg-[#f3f3f3] hover:text-[#000000] border border-[#f3f3f3]">
-                        <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364ll3.126-17.727"/></svg> Bitcoin
+                        <svg class="flex-shrink-0" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11.767 19.089c4.924.868 6.14-6.025 1.216-6.894m-1.216 6.894L5.86 18.047m5.908 1.042-.347 1.97m1.563-8.864c4.924.869 6.14-6.025 1.215-6.893m-1.215 6.893-3.94-.694m5.155-6.2L8.29 4.26m5.908 1.042.348-1.97M7.48 20.364l3.126-17.727"/></svg> Bitcoin
                     </button>
                 </div>
             </div>
@@ -901,14 +888,14 @@
                                 <label class="text-[#666666] text-sm font-medium">Foreground</label>
                                 <div class="flex items-center gap-2">
                                     <span id="fg-color-label" class="text-xs font-mono text-[#666666]">#000000</span>
-                                    <input id="fg-color" type="color" value="#000000" class="w-[30px] h-[30px] p-0 border border-gray-300 rounded-[2px] cursor-pointer overflow-hidden block" />
+                                    <input id="fg-color" type="color" aria-label="QR foreground colour" value="#000000" class="w-[30px] h-[30px] p-0 border border-gray-300 rounded-[2px] cursor-pointer overflow-hidden block" />
                                 </div>
                             </div>
                             <div class="flex items-center justify-between p-2 bg-white rounded-[2px] border border-[#f3f3f3]">
                                 <label class="text-[#666666] text-sm font-medium">Background</label>
                                 <div class="flex items-center gap-2">
                                     <span id="bg-color-label" class="text-xs font-mono text-[#666666]">#FFFFFF</span>
-                                    <input id="bg-color" type="color" value="#ffffff" class="w-[30px] h-[30px] p-0 border border-gray-300 rounded-[2px] cursor-pointer overflow-hidden block" />
+                                    <input id="bg-color" type="color" aria-label="QR background colour" value="#ffffff" class="w-[30px] h-[30px] p-0 border border-gray-300 rounded-[2px] cursor-pointer overflow-hidden block" />
                                 </div>
                             </div>
                         </div>
@@ -978,18 +965,18 @@
     <input id="file-input" type="file" accept="image/*" style="display:none;"/>
 
     <!-- End Replaced Hero Section -->
-    <div class="zubuz-hero-section" style="background-image: url(images/homepage/hero-background-shape.png)">
+    <div class="zubuz-hero-section" style="background-image: url(images/homepage/hero-background-shape.webp)">
         <div class="container">
             <div class="zubuz-hero-content center position-relative flex flex-col items-center justify-center">
-                <h1 class="text-5xl md:text-7xl font-bold text-center text-black mb-6" style="line-height: 1.1; letter-spacing: -1px;">Free Non-Expiring QR<br>Code Generator<br>Online</h1>
+                <h1 class="text-5xl md:text-7xl font-bold text-center text-black mb-6" style="line-height: 1.1; letter-spacing: -1px;">Free Non-Expiring QR <br>Code Generator <br>Online</h1>
                 <p class="text-center text-gray-700 mx-auto max-w-3xl mb-4 text-base md:text-lg">Generate permanent, non-expiring QR codes for any link in seconds.
                     MakeMyQRCode is a free online QR code generator that create, <a
-                        href="about-qr-code-generator.html" class="text-blue-500 hover:underline">customize</a>, and download QR
+                        href="about-qr-code-generator.html" class="text-blue-700 underline hover:text-blue-800">customize</a>, and download QR
                     codes
                     without signup.
                 </p>
                 <p class="text-center text-gray-700 mx-auto max-w-3xl mb-8 text-base md:text-lg">
-                    Professional high-resolution <a href="https://en.wikipedia.org/wiki/QR_code" class="text-blue-500 hover:underline">QR codes</a> with
+                    Professional high-resolution <a href="https://en.wikipedia.org/wiki/QR_code" class="text-blue-700 underline hover:text-blue-800">QR codes</a> with
                     instant customization. No watermarks, no limits.100%
                     Static &
                     Permanent QR Codes.
@@ -997,7 +984,7 @@
             </div>
             <div class="zubuz-hero-bottom flex justify-center">
                 <div class="zubuz-hero-thumb wow fadeInUpX text-center">
-                    <img src="images/homepage/qr-code-generator-banner.png" alt="my QR code" class="mx-auto block">
+                    <img fetchpriority="high" loading="eager" width="500" height="573" src="images/homepage/qr-code-generator-banner.webp" alt="Woman holding a smartphone displaying a discount coupon QR code ready to scan" class="mx-auto block">
                 </div>
             </div>
 
@@ -1427,7 +1414,7 @@
                             <h3 class="arch-card-title">${item.title}</h3>
                             <p class="arch-card-description">${item.description}</p>
                         </div>
-                        <a href="${item.link}" class="arch-card-action-btn" style="background-color: ${item.color}; box-shadow: 0 4px 12px rgba(${hexToRgb(item.color)}, 0.3);">
+                        <a href="${item.link}" aria-label="${item.title}" class="arch-card-action-btn" style="background-color: ${item.color}; box-shadow: 0 4px 12px rgba(${hexToRgb(item.color)}, 0.3);">
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
                         </a>
                     </div>
@@ -1685,32 +1672,28 @@
 
                         <div class="col-md-6">
                             <div class="icon-box">
-                                <img src="images/homepage/unlimited-qr-codes.png" alt="Unlimited QR Codes"
-                                    loading="lazy">
+                                <img loading="lazy" decoding="async" width="186" height="186" src="images/homepage/unlimited-qr-codes.webp" alt="Unlimited QR Codes">
                                 <span>Unlimited QR Codes</span>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="icon-box">
-                                <img src="images/homepage/global-qr-code-usage.png" alt="Free QR Code Generator Online"
-                                    loading="lazy">
+                                <img loading="lazy" decoding="async" width="186" height="186" src="images/homepage/global-qr-code-usage.webp" alt="Free QR Code Generator Online">
                                 <span>Global Usage</span>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="icon-box">
-                                <img src="images/homepage/qr-code-custom-colors.png" alt="Generate QR Code Instantly"
-                                    loading="lazy">
+                                <img loading="lazy" decoding="async" width="186" height="186" src="images/homepage/qr-code-custom-colors.webp" alt="Generate QR Code Instantly">
                                 <span>Custom Colors</span>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="icon-box">
-                                <img src="images/homepage/free-qr-code-generator.png" alt="Create Custom QR Code Free"
-                                    loading="lazy">
+                                <img loading="lazy" decoding="async" width="186" height="100" src="images/homepage/free-qr-code-generator.webp" alt="Create Custom QR Code Free">
                                 <span>Free Forever</span>
                             </div>
                         </div>
@@ -1729,8 +1712,7 @@
             <div class="row">
                 <div class="col-lg-5">
                     <div class="zubuz-thumb thumb-pr">
-                        <img src="images/homepage/why-choose-qr-code.png" alt="QR Code Generator Without Registration"
-                            loading="lazy">
+                        <img loading="lazy" decoding="async" width="901" height="1049" src="images/homepage/why-choose-qr-code.webp" alt="QR Code Generator Without Registration">
                     </div>
                 </div>
                 <div class="col-lg-7 d-flex align-items-center">
@@ -1779,13 +1761,12 @@
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="zubuz-iconbox-wrap center bg-white p-8 rounded-[2px] border border-[#f3f3f3] h-full shadow-sm hover:shadow-md transition-shadow">
                         <div class="zubuz-iconbox-icon flex justify-center mb-6">
-                            <img src="images/homepage/paste-link-qr-code.png" alt="Online QR Code Maker Tool"
-                                loading="lazy">
+                            <img loading="lazy" decoding="async" width="27" height="31" src="images/homepage/paste-link-qr-code.webp" alt="Online QR Code Maker Tool">
                         </div>
                         <div class="zubuz-iconbox-data text-center">
                             <h3 class="text-xl md:text-2xl font-bold text-black mb-3">Paste your link</h3>
                             <p class="text-gray-700 text-base">You can paste your any URL in the <a
-                                    href="privacy-policy-qr-code-tool.html" class="text-blue-500 hover:underline">
+                                    href="privacy-policy-qr-code-tool.html" class="text-blue-700 underline hover:text-blue-800">
                                     Destination</a> URL section.</p>
                         </div>
                     </div>
@@ -1793,8 +1774,7 @@
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="zubuz-iconbox-wrap center bg-white p-8 rounded-[2px] border border-[#f3f3f3] h-full shadow-sm hover:shadow-md transition-shadow">
                         <div class="zubuz-iconbox-icon flex justify-center mb-6">
-                            <img src="images/homepage/qr-code-design-tool.png" alt="Instant QR Code Creator"
-                                loading="lazy">
+                            <img loading="lazy" decoding="async" width="31" height="31" src="images/homepage/qr-code-design-tool.webp" alt="Instant QR Code Creator">
                         </div>
                         <div class="zubuz-iconbox-data text-center">
                             <h3 class="text-xl md:text-2xl font-bold text-black mb-3">Design QR code</h3>
@@ -1805,8 +1785,7 @@
                 <div class="col-xl-4 col-md-6 mb-4">
                     <div class="zubuz-iconbox-wrap center bg-white p-8 rounded-[2px] border border-[#f3f3f3] h-full shadow-sm hover:shadow-md transition-shadow">
                         <div class="zubuz-iconbox-icon flex justify-center mb-6">
-                            <img src="images/homepage/qr-code-download.png" alt="Permanent QR Code Generator"
-                                loading="lazy">
+                            <img loading="lazy" decoding="async" width="31" height="31" src="images/homepage/qr-code-download.webp" alt="Permanent QR Code Generator">
                         </div>
                         <div class="zubuz-iconbox-data text-center">
                             <h3 class="text-xl md:text-2xl font-bold text-black mb-3">Download your permanent QR code</h3>
@@ -1874,8 +1853,8 @@
 
                             <!-- CENTER IMAGE -->
                             <div class="col-lg-4 text-center mb-8 mb-lg-0 flex justify-center">
-                                <img src="images/homepage/qr-code-features.png" alt="Custom Color QR Code Generator"
-                                    class="img-fluid max-w-full" loading="lazy">
+                                <img loading="lazy" decoding="async" width="901" height="1029" src="images/homepage/qr-code-features.webp" alt="Smartphone displaying a large QR code created with Make My QR Code"
+                                    class="img-fluid max-w-full">
                             </div>
 
                             <!-- RIGHT CONTENT -->
@@ -1955,7 +1934,7 @@
             </div>
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
                 <a href="blog/qr-code-for-google-reviews.html" class="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <img src="images/blog/qr-code-google-reviews.png" alt="QR Code for Google Reviews" class="w-full h-56 object-cover" loading="lazy">
+                    <img loading="lazy" decoding="async" width="640" height="640" src="images/blog/qr-code-google-reviews.webp" alt="QR Code for Google Reviews" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <span class="text-sm font-semibold" style="color:#bd1819;">Marketing Strategy</span>
                         <h3 class="text-xl font-bold text-black mt-2 mb-2">QR Code for Google Reviews: Get More 5-Star Ratings</h3>
@@ -1964,7 +1943,7 @@
                     </div>
                 </a>
                 <a href="blog/how-qr-codes-help-businesses-grow-2026.html" class="block bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
-                    <img src="images/homepage/how-qr-codes-help-businesses-grow-faster.jpg" alt="How QR Codes Help Businesses Grow Faster" class="w-full h-56 object-cover" loading="lazy">
+                    <img loading="lazy" decoding="async" width="1080" height="600" src="images/homepage/how-qr-codes-help-businesses-grow-faster.webp" alt="How QR Codes Help Businesses Grow Faster" class="w-full h-56 object-cover">
                     <div class="p-6">
                         <span class="text-sm font-semibold" style="color:#bd1819;">Business Strategy</span>
                         <h3 class="text-xl font-bold text-black mt-2 mb-2">How QR Codes Help Businesses Grow Faster in 2026</h3>
@@ -1981,7 +1960,7 @@
             <!-- Logo Row -->
             <div class="footer-logo-row">
                 <a href="https://makemyqrcode.com/">
-                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code" class="footer-logo-img">
+                    <img loading="lazy" decoding="async" width="1400" height="306" src="images/logo/make-my-qr-code.webp" alt="Make My QR Code" class="footer-logo-img">
                 </a>
             </div>
 
@@ -1990,12 +1969,13 @@
                 <div class="footer-column">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="about-qr-code-generator.html">About Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="blog/qr-code-for-google-reviews.html">QR Code for Google Reviews</a></li>
                         <li><a href="blog/how-qr-codes-help-businesses-grow-2026.html">How QR Codes Grow Businesses</a></li>
                         <li><a href="about-qr-code-generator.html#faq">FAQs</a></li>
+                        <li><a href="compare-qr-code-generators.html">Compare</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -2133,10 +2113,36 @@
 
     <!-- scripts -->
 
-    <script src="js/index.js"></script>
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-    <script src="https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js"></script>
-    <script src="js/qr-generator.js"></script>
+    <script src="js/index.js?v=20261021f" defer></script>
+    <script>
+    /* The QR generator (unpkg lib + generator logic, ~135 KB) is loaded after
+       the page is idle. The static form is already visible, so the tool is
+       usable as soon as these land. */
+    (function () {
+        var loaded = false;
+        function load() {
+            if (loaded) return; loaded = true;
+            var lib = document.createElement('script');
+            lib.src = 'https://unpkg.com/qr-code-styling@1.5.0/lib/qr-code-styling.js';
+            lib.onload = function () {
+                var gen = document.createElement('script');
+                gen.src = 'js/qr-generator.js?v=20261021h';
+                document.body.appendChild(gen);
+            };
+            document.body.appendChild(lib);
+        }
+        function schedule() {
+            if ('requestIdleCallback' in window) requestIdleCallback(load, { timeout: 2500 });
+            else setTimeout(load, 1500);
+        }
+        if (document.readyState === 'complete') schedule();
+        else window.addEventListener('load', schedule);
+        /* If the user reaches for the tool before it loads, fetch immediately */
+        ['pointerdown','focusin','touchstart'].forEach(function (ev) {
+            document.addEventListener(ev, load, { once: true, passive: true });
+        });
+    })();
+    </script>
 </body>
 
 </html>
