@@ -12,7 +12,9 @@
     <script>
     (function () {
         function boot() {
-            /* Google tag (gtag.js) */
+            /* Google tag (gtag.js) - required: verified that GTM alone does
+               not fire GA4 on this container, so this stays until the GTM
+               container has its own GA4 config tag. */
             var g = document.createElement('script');
             g.async = true;
             g.src = 'https://www.googletagmanager.com/gtag/js?id=G-J1MKNEGPCE';
@@ -737,7 +739,7 @@
                 <!-- Brand Logo-->
                 <div class="brand-logo">
                     <a href="https://makemyqrcode.com/">
-                        <img loading="eager" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
+                        <img fetchpriority="high" loading="eager" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
                     </a>
                 </div>
                 <div class="menu-block-wrapper">
