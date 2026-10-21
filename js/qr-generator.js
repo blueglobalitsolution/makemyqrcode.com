@@ -253,7 +253,7 @@ function updatePreviewOverlay() {
 function updateDataTypeTabs() {
   document.querySelectorAll('.data-type-btn').forEach(btn => {
     const type = btn.dataset.type;
-    btn.className = `data-type-btn w-full flex justify-center items-center gap-1 md:gap-2 px-1 md:px-2 py-2.5 rounded-[2px] font-medium text-sm transition-all whitespace-nowrap ${type === state.dataType ? 'bg-[#bd1819] text-white' : 'bg-white text-[#666666] hover:bg-[#f3f3f3] hover:text-[#000000] border border-[#f3f3f3]'}`;
+    btn.className = `data-type-btn w-full flex justify-center items-center gap-1 md:gap-2 px-1 md:px-2 py-2.5 rounded-[2px] font-medium text-sm transition-all whitespace-nowrap ${type === state.dataType ? 'is-active bg-[#bd1819] text-white' : 'bg-white text-[#666666] hover:bg-[#f3f3f3] hover:text-[#000000] border border-[#f3f3f3]'}`;
   });
 }
 
@@ -631,7 +631,7 @@ function updateTabContent() {
 
   tabs.forEach(tab => {
     const t = tab.dataset.tab;
-    tab.className = `settings-tab w-1/3 flex items-center justify-center gap-2 py-4 px-2 text-sm font-semibold transition-all ${t === state.activeTab ? 'text-white bg-[#bd1819] border-b-2 border-[#bd1819]' : 'text-[#666666] hover:text-[#000000] hover:bg-white'}`;
+    tab.className = `settings-tab w-1/3 flex items-center justify-center gap-2 py-4 px-2 text-sm font-semibold transition-all ${t === state.activeTab ? 'is-active text-white bg-[#bd1819] border-b-2 border-[#bd1819]' : 'text-[#666666] hover:text-[#000000] hover:bg-white'}`;
   });
 
   logoContent.style.display = state.activeTab === 'logo' ? 'block' : 'none';

@@ -29,40 +29,39 @@
     
 
 
-        // Sticky Header Logic
-        $(window).on("scroll", function () {
-            var scroll = $(window).scrollTop();
-            if (scroll < 20) {
-                $("#sticky-menu").removeClass("sticky");
-            } else {
-                $("#sticky-menu").addClass("sticky");
-            }
-        });
+        // Sticky Header Logic (vanilla JS - no jQuery dependency)
+        (function () {
+            var header = document.getElementById('sticky-menu');
+            if (!header) return;
+            var ticking = false;
+            window.addEventListener('scroll', function () {
+                if (ticking) return;
+                ticking = true;
+                window.requestAnimationFrame(function () {
+                    if (window.pageYOffset < 20) {
+                        header.classList.remove('sticky');
+                    } else {
+                        header.classList.add('sticky');
+                    }
+                    ticking = false;
+                });
+            }, { passive: true });
+        })();
 
 
     
 
 
-        // Visitor Counter Script
+        // Visitor Tracking (invisible — data collected for admin dashboard)
         (function () {
-            // Make sure we only call once per page load
             if (window.visitorCounterCalled) return;
             window.visitorCounterCalled = true;
 
-            // Call PHP endpoint
-            fetch('/counter.php')
-                .then(response => response.json())
-                .then(data => {
-                    if (data.success) {
-                        console.log('Visitor count:', data.count);
-                        // Update the visitor counter display
-                        document.getElementById('visit-number').textContent = data.count;
-                    }
-                })
-                .catch(error => {
-                    console.error('Counter error:', error);
-                    document.getElementById('visit-number').textContent = 'â€”';
-                });
+            fetch('https://app.makemyqrcode.com/api/visits/track/', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify({page: window.location.pathname})
+            }).catch(function () {});
         })();
     
 
