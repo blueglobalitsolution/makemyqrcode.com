@@ -3,3 +3,12 @@ visitor_count.txt
 
 # Let's Encrypt SSL challenge tokens (transient)
 .well-known/acme-challenge/
+# Tailwind build tooling (only needed to rebuild css/tailwind.css)
+node_modules/
+package-lock.json
+
+# AEO audit tooling (local state, not part of the site)
+.goose-aeo.yml
+goose-aeo.db
+pricing.json
+.agents/

@@ -56,7 +56,7 @@
 
 
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=20261021f">
     <style>
         /* Custom premium UI enhancements for the header and Login button */
         header.zubuz-header-section {
@@ -143,11 +143,6 @@
                 width: 100% !important;
             }
 
-            .brand-logo img {
-                height: 36px !important;
-                max-height: 36px !important;
-                width: auto !important;
-            }
 
             .header-btn,
             .zubuz-header-btn-wrap {
@@ -588,7 +583,7 @@
                 <!-- Brand Logo-->
                 <div class="brand-logo">
                     <a href="https://makemyqrcode.com/">
-                        <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
+                        <img loading="eager" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
                     </a>
                 </div>
                 <div class="menu-block-wrapper">
@@ -597,14 +592,14 @@
                         <div class="mobile-menu-head">
                             <div class="mobile-drawer-logo">
                                 <a href="https://makemyqrcode.com/">
-                                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code">
+                                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code">
                                 </a>
                             </div>
                             <button type="button" class="mobile-menu-close" aria-label="Close Menu">&times;</button>
                         </div>
                         <ul class="site-menu-main">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link-item">Home</a>
+                                <a href="/" class="nav-link-item">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="about-qr-code-generator.html" class="nav-link-item">About Us</a>
@@ -639,16 +634,7 @@
 
                 <!-- ===== Visitor Counter ===== -->
 
-                <div id="visitor-counter">
-                    <i class="fas fa-users"></i>
-
-                    <!-- NUMBER ONLY -->
-                    <div class="visitor-badge">
-                        <span id="visit-number">-</span>
-                    </div>
-
-                </div>
-                <!-- mobile menu trigger -->
+<!-- mobile menu trigger -->
                 <div id="mobile-menu-trigger" class="mobile-menu-trigger light">
                     <span></span>
                 </div>
@@ -670,13 +656,44 @@
         </div>
     </div>
 
+
+    <div class="section" style="padding:40px 0 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 14px;">Practical QR code guides for business owners</h2>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">Most QR code advice online is written for people who already know what a QR code is. This blog is the opposite. Every guide here starts from the decision you are actually trying to make: should this code be static or dynamic, how big does it need to be printed, where should it go, and what should the person see after they scan it.</p>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">We write about the things that go wrong in practice. Codes printed too small for the distance they are read from. A Wi-Fi code left up after the password changed. A review campaign that sends customers to a page requiring a Google login. A menu code that points at a PDF nobody can read on a phone. These are not exotic failures &mdash; they are the normal failure modes, and they are all avoidable.</p>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">If you are new to QR codes, start with the type that matches your job &mdash; a website link, a Wi-Fi network, a digital business card &mdash; then come back here for the strategy. If you are comparing tools, our <a href="/compare-qr-code-generators.html" style="color:#bd1819;text-decoration:underline;">free QR code generator comparison</a> covers price, expiry, export formats and tracking across the main options.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="section zubuz-section-padding5" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
+
+                    <div style="background:#f9fafb;border:1px solid #e5e7eb;border-radius:10px;padding:20px 22px;margin:0 0 34px;">
+                        <h2 style="font-size:19px;font-weight:700;color:#111827;margin:0 0 12px;">Start here</h2>
+                        <ul style="margin:0;padding-left:20px;font-size:15.5px;line-height:1.9;color:#374151;">
+                            <li><a href="/qr-code-for-website.html" style="color:#bd1819;text-decoration:underline;">QR code for a website</a> &mdash; the most common type, and the one people get wrong most often</li>
+                            <li><a href="/qr-code-for-wifi.html" style="color:#bd1819;text-decoration:underline;">Wi-Fi QR code</a> &mdash; remove the most repeated question in hospitality</li>
+                            <li><a href="/blog/qr-code-for-google-reviews.html" style="color:#bd1819;text-decoration:underline;">QR code for Google Reviews</a> &mdash; turning scans into ratings</li>
+                            <li><a href="/compare-qr-code-generators.html" style="color:#bd1819;text-decoration:underline;">Free generators compared</a> &mdash; which tool actually fits your job</li>
+                        </ul>
+                        <h2 style="font-size:19px;font-weight:700;color:#111827;margin:18px 0 12px;">Core guides</h2>
+                        <ul style="margin:0;padding-left:20px;font-size:15.5px;line-height:1.9;color:#374151;">
+                            <li><a href="/do-qr-codes-expire.html" style="color:#bd1819;text-decoration:underline;">Do QR codes expire?</a> &mdash; the question behind most bad purchasing decisions</li>
+                            <li><a href="/qr-code-size-for-print.html" style="color:#bd1819;text-decoration:underline;">What size should a QR code be?</a> &mdash; a sizing table for cards, flyers and signage</li>
+                            <li><a href="/static-vs-dynamic-qr-codes.html" style="color:#bd1819;text-decoration:underline;">Static vs dynamic QR codes</a> &mdash; what you give up when you rent a redirect</li>
+                            <li><a href="/how-do-qr-codes-work.html" style="color:#bd1819;text-decoration:underline;">How QR codes work</a> &mdash; error correction, capacity and why logos don't break them</li>
+                        </ul>
+                    </div>
                     <!-- Blog Post: QR Code for Google Reviews -->
                     <article class="mb-5" style="margin-bottom: 40px;">
-                        <img src="images/blog/qr-code-google-reviews.png"
+                        <img loading="lazy" decoding="async" width="640" height="640" src="images/blog/qr-code-google-reviews.webp"
                             alt="QR Code for Google Reviews: Get More 5 Reviews" class="img-fluid rounded mb-3"
                             style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
                         <div class="zubuz-blog-categorie mb-2" style="margin-bottom: 10px;">
@@ -699,7 +716,7 @@
 
                     <!-- Blog Post: Grow Faster in 2026 -->
                     <article class="mb-5" style="margin-bottom: 40px;">
-                        <img src="images/homepage/how-qr-codes-help-businesses-grow-faster.jpg"
+                        <img loading="lazy" decoding="async" width="1080" height="600" src="images/homepage/how-qr-codes-help-businesses-grow-faster.webp"
                             alt="How QR Codes Help Businesses Grow Faster in 2026" class="img-fluid rounded mb-3"
                             style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
                         <div class="zubuz-blog-categorie mb-2" style="margin-bottom: 10px;">
@@ -764,12 +781,34 @@
             </div>
         </div>
     </div>
+
+    <div class="section" style="padding:20px 0 60px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 14px;">Common questions about QR codes</h2>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Are QR codes free to use?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">Yes. The QR code format is open and royalty-free, so anyone can generate and print codes without paying a licence fee. You may still pay for a service that hosts dynamic redirects or provides scan analytics, but creating a static code costs nothing.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Do QR codes expire?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">Static QR codes never expire because the destination is stored inside the pattern itself. A dynamic QR code works through a redirect controlled by a provider, so it stops working if that subscription lapses. If permanence matters, choose static.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">How big should a printed QR code be?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">A practical rule is one centimetre of code width for every 10 centimetres of scanning distance. A code read from 30 cm needs about 3 cm; one read across a room needs proportionally more. Always print a physical proof and test it at the real distance.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Can QR code scans be tracked?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">Only dynamic codes can be tracked, because the scan passes through a redirect the provider controls. Static codes give you no scan data at all. If you need numbers, plan for a dynamic provider before you print.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Do QR codes work without internet?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">The scan itself needs no connection when the data is stored in the code, such as plain text or a Wi-Fi password. If the code points at a URL, the page still needs a connection to load.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer class="custom-premium-footer">
         <div class="container">
             <!-- Logo Row -->
             <div class="footer-logo-row">
                 <a href="https://makemyqrcode.com/">
-                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code" class="footer-logo-img">
+                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code" class="footer-logo-img">
                 </a>
             </div>
 
@@ -778,10 +817,11 @@
                 <div class="footer-column">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="about-qr-code-generator.html">About Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="about-qr-code-generator.html#faq">FAQs</a></li>
+                        <li><a href="compare-qr-code-generators.html">Compare</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -923,7 +963,7 @@
 
 
 
-    <script src="js/index.js"></script>
+    <script src="js/index.js?v=20261021f"></script>
     <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -935,6 +975,55 @@
     "@type": "Organization",
     "name": "Make My QR Code"
   }
+}
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "Are QR codes free to use?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Yes. The QR code format is open and royalty-free, so anyone can generate and print codes without paying a licence fee. You may still pay for a service that hosts dynamic redirects or provides scan analytics, but creating a static code costs nothing."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do QR codes expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Static QR codes never expire because the destination is stored inside the pattern itself. A dynamic QR code works through a redirect controlled by a provider, so it stops working if that subscription lapses. If permanence matters, choose static."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How big should a printed QR code be?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A practical rule is one centimetre of code width for every 10 centimetres of scanning distance. A code read from 30 cm needs about 3 cm; one read across a room needs proportionally more. Always print a physical proof and test it at the real distance."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can QR code scans be tracked?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Only dynamic codes can be tracked, because the scan passes through a redirect the provider controls. Static codes give you no scan data at all. If you need numbers, plan for a dynamic provider before you print."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do QR codes work without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The scan itself needs no connection when the data is stored in the code, such as plain text or a Wi-Fi password. If the code points at a URL, the page still needs a connection to load."
+      }
+    }
+  ]
 }
 </script>
 </body>

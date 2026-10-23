@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "aeo": {
+      "source": "gooseworks-ai/goose-skills",
+      "sourceType": "github",
+      "skillPath": "skills/seo/capabilities/aeo/SKILL.md",
+      "computedHash": "1824c10c4d15f7217afb84fb39897100ac497f1301dcd9fdebb18b14f523c445"
+    }
+  }
+}

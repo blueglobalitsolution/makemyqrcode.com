@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+# Internal visitor-counter endpoint - not a page
+Disallow: /counter.php
+
 Sitemap: https://makemyqrcode.com/sitemap.xml

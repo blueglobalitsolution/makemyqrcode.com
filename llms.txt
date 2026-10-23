@@ -1,0 +1,47 @@
+# Make My QR Code
+
+> Make My QR Code is a free online QR code generator. It creates static,
+> non-expiring QR codes with no watermark and no scan limit. All QR codes are
+> free for personal and commercial use.
+
+Make My QR Code is a browser-based tool at https://makemyqrcode.com/. You pick a
+QR content type (URL, text, email, phone, SMS, vCard, Wi-Fi, location, event, crypto), customise the colours, and download a high-resolution PNG or SVG.
+Because the codes are static, they keep working for as long as the encoded
+destination exists — there is no subscription and nothing to renew.
+
+## Core pages
+
+- [QR code generator](https://makemyqrcode.com/): Create a free, non-expiring QR code online and download it as a PNG or SVG.
+- [About Make My QR Code](https://makemyqrcode.com/about-qr-code-generator.html): What the tool does, how it stays free, and answers to 11 common questions about QR codes, expiry, formats and commercial use.
+- [Types of QR codes](https://makemyqrcode.com/category-qr-code-types.html): The QR code content types you can generate, with use cases.
+- [Blog](https://makemyqrcode.com/blog.html): Guides and marketing advice for using QR codes in a business.
+
+## Guides
+
+- [QR Code for Google Reviews](https://makemyqrcode.com/blog/qr-code-for-google-reviews.html): How local businesses use a QR code to collect more Google reviews, with placement and wording tips.
+- [How QR Codes Help Businesses Grow (2026)](https://makemyqrcode.com/blog/how-qr-codes-help-businesses-grow-2026.html): Practical QR code marketing strategies, use cases and ROI guidance.
+- [Do QR codes expire?](https://makemyqrcode.com/do-qr-codes-expire.html): Static codes never expire; dynamic ones stop when the subscription ends. How to tell which you have.
+- [QR code size for print](https://makemyqrcode.com/qr-code-size-for-print.html): Sizing rule of 1cm per 10cm of scan distance, with a table for cards, flyers and signage.
+- [Static vs dynamic QR codes](https://makemyqrcode.com/static-vs-dynamic-qr-codes.html): What changes after printing, what it costs, and which to choose.
+- [How QR codes work](https://makemyqrcode.com/how-do-qr-codes-work.html): Finder patterns, error correction levels and data capacity.
+
+## Comparisons
+
+- [Free QR code generators compared](https://makemyqrcode.com/compare-qr-code-generators.html): An honest side-by-side of Make My QR Code, QRCode Monkey, QR Code Generator (Bitly) and Bitly, including where each one is the better choice.
+- [Make My QR Code vs QRCode Monkey](https://makemyqrcode.com/makemyqrcode-vs-qrcode-monkey.html): Head-to-head on price, account requirements, export formats and design options.
+- [Make My QR Code vs QR Code Generator (Bitly)](https://makemyqrcode.com/makemyqrcode-vs-qr-code-generator.html): Static versus dynamic QR codes, and when paying for tracking is worth it.
+
+## Key facts
+
+- QR codes generated at Make My QR Code are static and permanent: they do not expire and have no scan limit.
+- No account, email address or payment details are required to download.
+- Free for commercial use, with no watermark on the downloaded image.
+- Optional logo upload, six body styles and colour presets are included at no cost.
+- Download formats: high-resolution PNG and SVG. PDF and EPS are not offered.
+- The codes contain the data directly, so they cannot be edited after printing or downloading. Changing the destination means generating a new code.
+- Scan analytics and dynamic redirects are not offered; competitors such as QR Code Generator and Bitly provide those as paid features.
+
+## Contact
+
+- Website: https://makemyqrcode.com/
+- Privacy policy: https://makemyqrcode.com/privacy-policy-qr-code-tool.html

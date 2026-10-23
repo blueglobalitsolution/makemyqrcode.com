@@ -113,7 +113,7 @@
         rel="stylesheet">
     <!-- End google font  -->
 
-    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="css/index.css?v=20261021f">
     <style>
         /* Custom premium UI enhancements for the header and Login button */
         header.zubuz-header-section {
@@ -187,11 +187,6 @@
                 width: 100% !important;
             }
 
-            .brand-logo img {
-                height: 36px !important;
-                max-height: 36px !important;
-                width: auto !important;
-            }
 
             .header-btn,
             .zubuz-header-btn-wrap {
@@ -627,7 +622,7 @@
                 <!-- Brand Logo-->
                 <div class="brand-logo">
                     <a href="https://makemyqrcode.com/">
-                        <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
+                        <img loading="eager" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
                     </a>
                 </div>
                 <div class="menu-block-wrapper">
@@ -636,14 +631,14 @@
                         <div class="mobile-menu-head">
                             <div class="mobile-drawer-logo">
                                 <a href="https://makemyqrcode.com/">
-                                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code">
+                                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code">
                                 </a>
                             </div>
                             <button type="button" class="mobile-menu-close" aria-label="Close Menu">&times;</button>
                         </div>
                         <ul class="site-menu-main">
                             <li class="nav-item">
-                                <a href="index.html" class="nav-link-item">Home</a>
+                                <a href="/" class="nav-link-item">Home</a>
                             </li>
                             <li class="nav-item">
                                 <a href="about-qr-code-generator.html" class="nav-link-item">About Us</a>
@@ -691,13 +686,26 @@
         </div>
     </div>
 
+
+    <div class="section" style="padding:36px 0 0;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 14px;">How QR code types actually differ</h2>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">Every QR code holds the same thing: a short string of data. What changes between types is the <em>format</em> of that string. A website code holds a URL. A Wi-Fi code holds a network name and password in a structure phones recognise. A vCard code holds contact fields. The phone reads the format and decides which app to open.</p>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">That is why choosing the right type matters more than choosing the right colour or logo. A URL code that points at a contact page is not the same experience as a vCard code that saves your details into someone's address book, even though both end up on the same website.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <div class="section zubuz-section-padding5" style="padding-top: 50px; padding-bottom: 50px;">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <!-- Blog Post: QR Code for Google Reviews -->
                     <article class="mb-5" style="margin-bottom: 40px;">
-                        <img src="images/blog/qr-code-google-reviews.png"
+                        <img loading="lazy" decoding="async" width="640" height="640" src="images/blog/qr-code-google-reviews.webp"
                             alt="QR Code for Google Reviews: Get More 5 Reviews" class="img-fluid rounded mb-3"
                             style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
                         <div class="zubuz-blog-categorie mb-2" style="margin-bottom: 10px;">
@@ -720,7 +728,7 @@
 
                     <!-- Blog Post: Grow Faster in 2026 -->
                     <article class="mb-5" style="margin-bottom: 40px;">
-                        <img src="images/homepage/how-qr-codes-help-businesses-grow-faster.jpg"
+                        <img loading="lazy" decoding="async" width="1080" height="600" src="images/homepage/how-qr-codes-help-businesses-grow-faster.webp"
                             alt="How QR Codes Help Businesses Grow Faster in 2026" class="img-fluid rounded mb-3"
                             style="max-height: 400px; width: 100%; object-fit: cover; border-radius: 10px; margin-bottom: 15px;">
                         <div class="zubuz-blog-categorie mb-2" style="margin-bottom: 10px;">
@@ -778,12 +786,75 @@
         </div>
     </div>
 
-    <footer class="custom-premium-footer">
+    
+    <div class="section" style="padding:10px 0 60px;">
+        <div class="container">
+            <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 8px;">Create a QR code by type</h2>
+            <p style="color:#4b5563;margin:0 0 22px;font-size:16px;">Every type is free, permanent and has its own step-by-step guide.</p>
+            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:14px;">
+<a href="/qr-code-for-website.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Website link<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Open any URL with one scan</span></a>
+<a href="/qr-code-for-wifi.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Wi-Fi network<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Let guests join without typing a password</span></a>
+<a href="/qr-code-for-vcard.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Digital business card<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Save your contact details instantly</span></a>
+<a href="/qr-code-for-email.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Email<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Open a pre-filled email draft</span></a>
+<a href="/qr-code-for-phone-call.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Phone call<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Dial your number in one tap</span></a>
+<a href="/qr-code-for-sms.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">SMS<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Send a pre-written text message</span></a>
+<a href="/qr-code-for-location.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Location<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Open a map at your exact spot</span></a>
+<a href="/qr-code-for-event.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Event<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Add the date and venue to a calendar</span></a>
+<a href="/qr-code-for-text.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Plain text<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Instructions and codes, readable offline</span></a>
+<a href="/qr-code-for-crypto.html" style="display:block;padding:16px 18px;border:1px solid #e5e7eb;border-radius:10px;text-decoration:none;color:#111827;font-weight:600;background:#fff;">Crypto payment<span style="display:block;font-weight:400;font-size:13.5px;color:#6b7280;margin-top:5px;line-height:1.5;">Bitcoin, Ethereum and more</span></a>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="section" style="padding:0 0 40px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 14px;">How to choose the right type</h2>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">Work backwards from what the person should be able to do in the three seconds after they scan. If the answer is "open something", use a link type. If it is "join something", use a credential type. If it is "keep something", use a contact or calendar type.</p>
+                    <ul style="font-size:16px;line-height:1.85;color:#374151;">
+                        <li><strong>They need to reach a page or file</strong> &mdash; use a <a href="/qr-code-for-website.html" style="color:#bd1819;text-decoration:underline;">website link code</a>, even if that page is a menu, a video or a PDF.</li>
+                        <li><strong>They need to join your network</strong> &mdash; use a <a href="/qr-code-for-wifi.html" style="color:#bd1819;text-decoration:underline;">Wi-Fi code</a> so nobody has to read a password off a card.</li>
+                        <li><strong>They need to save your details</strong> &mdash; use a <a href="/qr-code-for-vcard.html" style="color:#bd1819;text-decoration:underline;">vCard code</a> rather than a link to your contact page.</li>
+                        <li><strong>They need to reach a human</strong> &mdash; a <a href="/qr-code-for-phone-call.html" style="color:#bd1819;text-decoration:underline;">phone</a> or <a href="/qr-code-for-email.html" style="color:#bd1819;text-decoration:underline;">email</a> code removes the typing step entirely.</li>
+                        <li><strong>They need to remember a date</strong> &mdash; use an <a href="/qr-code-for-event.html" style="color:#bd1819;text-decoration:underline;">event code</a> that adds itself to their calendar.</li>
+                        <li><strong>They need to find you</strong> &mdash; a <a href="/qr-code-for-location.html" style="color:#bd1819;text-decoration:underline;">location code</a> drops a map pin at your door.</li>
+                        <li><strong>They need to pay</strong> &mdash; use a <a href="/qr-code-for-crypto.html" style="color:#bd1819;text-decoration:underline;">crypto code</a> so the address cannot be mistyped.</li>
+                    </ul>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;">Two practical cautions. First, every extra character makes the pattern denser, so prefer the leanest type that solves the problem &mdash; a URL pointing at a hosted vCard is heavier than a compact vCard code, but a full contact record with a photo can be heavier still. Second, all of these are static codes: they store their data permanently and cannot be changed after printing.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" style="padding:0 0 60px;">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 style="font-size:26px;font-weight:700;color:#111827;margin:0 0 14px;">Frequently asked questions</h2>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">What are the main types of QR codes?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">The common types are website link (URL), plain text, email, phone call, SMS, vCard contact, Wi-Fi, location, calendar event and cryptocurrency payment. Each stores a different data format, which determines what the phone does after scanning.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Which QR code type should I use for a restaurant menu?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">A website link code, pointed at a mobile-friendly menu page rather than a PDF. A PDF forces pinching and zooming on a phone. The menu is content, not a QR type, so the right code is simply a URL.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Can I change the type of a QR code after printing?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">No. The data format is baked into the pattern. Changing the type, the destination or the Wi-Fi password requires generating and printing a new code.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Do all QR code types expire?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">No. Every type generated by Make My QR Code is static and permanent. Codes only expire if they rely on a third-party redirect service that stops running.</p>
+                    <h3 style="font-size:18px;color:#111827;margin:22px 0 6px;">Do all QR code types need internet?</h3>
+                    <p style="font-size:16px;line-height:1.75;color:#374151;margin:0;">The scan works offline for text and Wi-Fi codes because the data is inside the pattern. Link, location, email and calendar codes still need a connection on the phone to complete the action.</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+<footer class="custom-premium-footer">
         <div class="container">
             <!-- Logo Row -->
             <div class="footer-logo-row">
                 <a href="https://makemyqrcode.com/">
-                    <img src="images/logo/make-my-qr-code.png" alt="Make My QR Code" class="footer-logo-img">
+                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code" class="footer-logo-img">
                 </a>
             </div>
 
@@ -792,10 +863,11 @@
                 <div class="footer-column">
                     <h4>Navigation</h4>
                     <ul>
-                        <li><a href="index.html">Home</a></li>
+                        <li><a href="/">Home</a></li>
                         <li><a href="about-qr-code-generator.html">About Us</a></li>
                         <li><a href="blog.html">Blog</a></li>
                         <li><a href="about-qr-code-generator.html#faq">FAQs</a></li>
+                        <li><a href="compare-qr-code-generators.html">Compare</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
@@ -866,7 +938,56 @@
         </div>
     </footer>
 
-    <script src="js/index.js"></script>
+    <script src="js/index.js?v=20261021f"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "What are the main types of QR codes?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The common types are website link (URL), plain text, email, phone call, SMS, vCard contact, Wi-Fi, location, calendar event and cryptocurrency payment. Each stores a different data format, which determines what the phone does after scanning."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Which QR code type should I use for a restaurant menu?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "A website link code, pointed at a mobile-friendly menu page rather than a PDF. A PDF forces pinching and zooming on a phone. The menu is content, not a QR type, so the right code is simply a URL."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can I change the type of a QR code after printing?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. The data format is baked into the pattern. Changing the type, the destination or the Wi-Fi password requires generating and printing a new code."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do all QR code types expire?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "No. Every type generated by Make My QR Code is static and permanent. Codes only expire if they rely on a third-party redirect service that stops running."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Do all QR code types need internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The scan works offline for text and Wi-Fi codes because the data is inside the pattern. Link, location, email and calendar codes still need a connection on the phone to complete the action."
+      }
+    }
+  ]
+}
+</script>
 </body>
 
 </html>

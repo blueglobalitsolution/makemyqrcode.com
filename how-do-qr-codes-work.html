@@ -1,0 +1,1024 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-J1MKNEGPCE"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-J1MKNEGPCE');
+    </script>
+
+    <!-- Google Tag Manager -->
+    <script>(function (w, d, s, l, i) {
+            w[l] = w[l] || []; w[l].push({
+                'gtm.start':
+                    new Date().getTime(), event: 'gtm.js'
+            }); var f = d.getElementsByTagName(s)[0],
+                j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
+                    'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
+        })(window, document, 'script', 'dataLayer', 'GTM-5HWX75PW');</script>
+
+    <title>How Do QR Codes Work? Structure, Error Correction &amp; Capacity</title>
+
+    <meta name="description" content="How a QR code is built: finder patterns, data modules, error correction levels and capacity. Why logos work, and why some codes fail to scan.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="How Do QR Codes Work? Structure, Error Correction &amp; Capacity" />
+    <meta property="og:description" content="How a QR code is built: finder patterns, data modules, error correction levels and capacity. Why logos work, and why some codes fail to scan." />
+    <meta property="og:type" content="article" />
+    <meta property="og:url" content="https://makemyqrcode.com/how-do-qr-codes-work.html" />
+    <meta property="og:image" content="https://makemyqrcode.com/images/homepage/qr-code-generator-banner.png" />
+    <meta property="og:site_name" content="Make My QR Code" />
+    <meta property="og:locale" content="en_US" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How Do QR Codes Work? Structure, Error Correction &amp; Capacity" />
+    <meta name="twitter:description" content="How a QR code is built: finder patterns, data modules, error correction levels and capacity. Why logos work, and why some codes fail to scan." />
+    <meta name="twitter:image" content="https://makemyqrcode.com/images/homepage/qr-code-generator-banner.png" />
+
+    <link rel="canonical" href="https://makemyqrcode.com/how-do-qr-codes-work.html">
+    <link rel="icon" type="image/png" href="favicon.ico">
+    <link rel="shortcut icon" type="image/png" href="favicon.ico">
+
+    <!--- End favicon-->
+
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Raleway:wght@600;700&display=swap"
+        rel="stylesheet">
+    <!-- End google font  -->
+    <!-- End google font  -->
+
+
+
+
+    <link rel="stylesheet" href="css/index.css?v=20261021f">
+    <style>
+        /* Custom premium UI enhancements for the header and Login button */
+        header.zubuz-header-section {
+            padding: 24px 0 !important;
+            /* Makes header more spacious */
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03) !important;
+            /* Elegant subtle shadow for depth */
+            background: rgba(255, 255, 255, 0.98) !important;
+            backdrop-filter: blur(8px);
+            /* Modern glassmorphism effect */
+            transition: all 0.3s ease-in-out !important;
+        }
+
+        header.zubuz-header-section.sticky-menu,
+        header.zubuz-header-section.sticky {
+            padding: 14px 0 !important;
+            /* Snug styling when sticky */
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08) !important;
+            background: rgba(255, 255, 255, 0.98) !important;
+        }
+
+        .zubuz-login-btn-red {
+            background-color: #bd1819 !important;
+            /* Premium brand red */
+            color: #ffffff !important;
+            padding: 10px 24px !important;
+            border-radius: 6px !important;
+            font-weight: 700 !important;
+            display: inline-flex !important;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1) !important;
+            text-decoration: none !important;
+            box-shadow: 0 4px 12px rgba(189, 24, 25, 0.2) !important;
+        }
+
+        .zubuz-login-btn-red:hover {
+            background-color: #a31213 !important;
+            /* Elegant hover shade */
+            color: #ffffff !important;
+            transform: translateY(-2px) !important;
+            /* Floating lift animation */
+            box-shadow: 0 6px 20px rgba(189, 24, 25, 0.35) !important;
+        }
+
+        .zubuz-header-btn-wrap {
+            gap: 12px !important;
+            display: flex;
+            align-items: center;
+        }
+
+        .zubuz-header-btn-wrap a.zubuz-login-btn:not(.zubuz-login-btn-red) {
+            padding: 8px 16px !important;
+            border-radius: 4px !important;
+            font-weight: 600 !important;
+            transition: all 0.2s ease !important;
+        }
+
+        .zubuz-header-btn-wrap a.zubuz-login-btn:not(.zubuz-login-btn-red):hover {
+            background-color: rgba(0, 0, 0, 0.03) !important;
+            color: #bd1819 !important;
+        }
+
+        /* Hide mobile-specific elements on desktop */
+        @media (min-width: 992px) {
+            .mobile-menu-trigger,
+            #mobile-menu-trigger,
+            .menu-block-wrapper .menu-block,
+            .menu-block-wrapper .menu-overlay {
+                display: none !important;
+            }
+        }
+
+        /* Mobile Header & Responsive Drawer Styles */
+        @media (max-width: 991px) {
+            header.zubuz-header-section {
+                padding: 12px 0 !important;
+            }
+
+            .site-navbar {
+                display: flex !important;
+                justify-content: space-between !important;
+                align-items: center !important;
+                width: 100% !important;
+            }
+
+
+            .header-btn,
+            .zubuz-header-btn-wrap {
+                display: none !important;
+            }
+
+            /* Hamburger Trigger Button */
+            .mobile-menu-trigger,
+            #mobile-menu-trigger {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                width: 42px !important;
+                height: 42px !important;
+                border-radius: 8px !important;
+                background: #f8fafc !important;
+                border: 1px solid #e2e8f0 !important;
+                cursor: pointer !important;
+                margin-left: auto !important;
+                flex-shrink: 0 !important;
+                transition: all 0.2s ease !important;
+                padding: 0 !important;
+            }
+
+            .mobile-menu-trigger:hover,
+            #mobile-menu-trigger:hover {
+                background: #f1f5f9 !important;
+                border-color: #cbd5e1 !important;
+            }
+
+            .mobile-menu-trigger span,
+            #mobile-menu-trigger span {
+                display: block !important;
+                width: 20px !important;
+                height: 2px !important;
+                background-color: #111827 !important;
+                position: relative !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .mobile-menu-trigger span::before,
+            .mobile-menu-trigger span::after,
+            #mobile-menu-trigger span::before,
+            #mobile-menu-trigger span::after {
+                content: '' !important;
+                position: absolute !important;
+                left: 0 !important;
+                width: 100% !important;
+                height: 2px !important;
+                background-color: #111827 !important;
+                border-radius: 2px !important;
+                transition: all 0.3s ease !important;
+            }
+
+            .mobile-menu-trigger span::before,
+            #mobile-menu-trigger span::before {
+                top: -6px !important;
+            }
+
+            .mobile-menu-trigger span::after,
+            #mobile-menu-trigger span::after {
+                top: 6px !important;
+            }
+
+            /* Mobile Backdrop Overlay */
+            .menu-block-wrapper .menu-overlay {
+                position: fixed !important;
+                inset: 0 !important;
+                width: 100vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                background: rgba(15, 23, 42, 0.6) !important;
+                backdrop-filter: blur(4px) !important;
+                z-index: 99998 !important;
+                opacity: 0 !important;
+                pointer-events: none !important;
+                visibility: hidden !important;
+                transition: opacity 0.3s ease, visibility 0.3s ease !important;
+                display: block !important;
+            }
+
+            .menu-block-wrapper .menu-overlay.active {
+                opacity: 1 !important;
+                pointer-events: auto !important;
+                visibility: visible !important;
+            }
+
+            /* Mobile Drawer */
+            .site-header .menu-block-wrapper .menu-block,
+            .menu-block {
+                position: fixed !important;
+                top: 0 !important;
+                left: 0 !important;
+                bottom: 0 !important;
+                width: 300px !important;
+                max-width: 85vw !important;
+                height: 100vh !important;
+                height: 100dvh !important;
+                background-color: #ffffff !important;
+                z-index: 99999 !important;
+                box-shadow: 10px 0 35px rgba(0, 0, 0, 0.2) !important;
+                transform: translateX(-100%) !important;
+                transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+                display: flex !important;
+                flex-direction: column !important;
+                overflow: hidden !important;
+                visibility: visible !important;
+                opacity: 1 !important;
+            }
+
+            .site-header .menu-block-wrapper .menu-block.active,
+            .menu-block.active {
+                transform: translateX(0) !important;
+            }
+
+            /* Drawer Header */
+            .mobile-menu-head {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: space-between !important;
+                padding: 16px 20px !important;
+                border-bottom: 1px solid #f1f5f9 !important;
+                background: #ffffff !important;
+                flex-shrink: 0 !important;
+                height: auto !important;
+            }
+
+            .mobile-drawer-logo img {
+                height: 30px !important;
+                width: auto !important;
+                max-width: 150px !important;
+            }
+
+            .mobile-menu-close {
+                width: 36px !important;
+                height: 36px !important;
+                border-radius: 50% !important;
+                background: #f1f5f9 !important;
+                border: none !important;
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                font-size: 24px !important;
+                line-height: 1 !important;
+                color: #475569 !important;
+                cursor: pointer !important;
+                transition: all 0.2s ease !important;
+                padding: 0 !important;
+            }
+
+            .mobile-menu-close:hover {
+                background: #e2e8f0 !important;
+                color: #bd1819 !important;
+            }
+
+            /* Drawer Nav Items */
+            .site-menu-main {
+                flex: 1 !important;
+                overflow-y: auto !important;
+                padding: 16px 14px !important;
+                margin: 0 !important;
+                list-style: none !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 6px !important;
+            }
+
+            .site-menu-main li {
+                list-style: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                display: block !important;
+            }
+
+            .site-menu-main li a.nav-link-item {
+                display: flex !important;
+                align-items: center !important;
+                padding: 12px 16px !important;
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                color: #1e293b !important;
+                text-decoration: none !important;
+                border-radius: 8px !important;
+                border: none !important;
+                height: auto !important;
+                line-height: 1.4 !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .site-menu-main li a.nav-link-item:hover,
+            .site-menu-main li a.nav-link-item:active {
+                background: #f8fafc !important;
+                color: #bd1819 !important;
+            }
+
+            .mobile-auth-btns {
+                margin-top: 28px !important;
+                padding-top: 20px !important;
+                border-top: 1px solid #e2e8f0 !important;
+                display: flex !important;
+                flex-direction: column !important;
+                gap: 16px !important;
+            }
+
+            .mobile-login-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                font-weight: 700 !important;
+                font-size: 15px !important;
+                color: #bd1819 !important;
+                background: #fef2f2 !important;
+                border: 1px solid #fecaca !important;
+                text-decoration: none !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .mobile-login-btn:hover {
+                background: #fee2e2 !important;
+                color: #991b1b !important;
+            }
+
+            .mobile-signup-btn {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+                padding: 12px 20px !important;
+                border-radius: 8px !important;
+                font-weight: 700 !important;
+                font-size: 15px !important;
+                color: #ffffff !important;
+                background: linear-gradient(135deg, #bd1819 0%, #a31213 100%) !important;
+                border: none !important;
+                box-shadow: 0 4px 12px rgba(189, 24, 25, 0.25) !important;
+                text-decoration: none !important;
+                transition: all 0.2s ease !important;
+            }
+
+            .mobile-signup-btn:hover {
+                background: linear-gradient(135deg, #a31213 0%, #890c0d 100%) !important;
+                box-shadow: 0 6px 16px rgba(189, 24, 25, 0.35) !important;
+                color: #ffffff !important;
+            }
+        }
+
+        /* Custom Premium Reference Footer Style - White & Red Combination */
+        .custom-premium-footer {
+            background-color: #ffffff !important;
+            padding: 80px 0 0 0 !important;
+            font-family: 'Inter', sans-serif !important;
+            color: #1f2937 !important;
+            overflow: hidden;
+            position: relative;
+            border-top: 3px solid #bd1819;
+        }
+
+        .footer-logo-row {
+            margin-bottom: 40px !important;
+            text-align: left !important;
+        }
+
+        .footer-logo-img {
+            height: auto !important;
+            width: 320px !important;
+            max-width: 100% !important;
+            filter: brightness(1) contrast(1.05);
+        }
+
+        /* Grid Card (The Rounded Square container) */
+        .footer-grid-card {
+            background: #ffffff !important;
+            border: 1px solid rgba(189, 24, 25, 0.12) !important;
+            border-radius: 16px !important;
+            padding: 40px !important;
+            display: grid !important;
+            grid-template-columns: repeat(3, 1fr) !important;
+            gap: 30px !important;
+            margin-bottom: 25px !important;
+            backdrop-filter: blur(12px) !important;
+            box-shadow: 0 10px 30px rgba(189, 24, 25, 0.03) !important;
+            transition: all 0.4s ease;
+        }
+
+        .footer-grid-card:hover {
+            border-color: rgba(189, 24, 25, 0.3) !important;
+            box-shadow: 0 10px 30px rgba(189, 24, 25, 0.08) !important;
+        }
+
+        .footer-column h4 {
+            color: #bd1819 !important; /* Premium brand red for headers */
+            font-size: 18px !important;
+            font-weight: 700 !important;
+            margin-bottom: 24px !important;
+            letter-spacing: 0px !important;
+            text-transform: uppercase !important;
+            position: relative;
+            font-family: 'Raleway', sans-serif !important;
+        }
+
+        .footer-column ul {
+            list-style: none !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 14px !important;
+        }
+
+        .footer-column ul li a {
+            color: #4b5563 !important; /* Clean dark gray for readability on white */
+            font-size: 15px !important;
+            text-decoration: none !important;
+            font-weight: 500 !important;
+            transition: all 0.3s ease !important;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .footer-column ul li a:hover {
+            color: #bd1819 !important; /* Premium brand red on hover */
+            transform: translateX(4px);
+        }
+
+        .footer-column ul li a i {
+            font-size: 16px;
+            transition: transform 0.3s ease;
+        }
+
+        .footer-column ul li a:hover i {
+            transform: scale(1.2);
+        }
+
+        /* Copyright Row Card (Rounded Square container) */
+        .footer-copyright-card {
+            background: rgba(189, 24, 25, 0.02) !important;
+            border: 1px solid rgba(189, 24, 25, 0.08) !important;
+            border-radius: 12px !important;
+            padding: 24px 30px !important;
+            display: flex !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            flex-wrap: wrap !important;
+            gap: 15px !important;
+            margin-bottom: 60px !important;
+            backdrop-filter: blur(12px) !important;
+        }
+
+        .copyright-text {
+            color: #4b5563 !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+
+        .designed-text {
+            color: #4b5563 !important;
+            font-size: 14px !important;
+            font-weight: 500 !important;
+        }
+
+        .designed-text a {
+            color: #111827 !important;
+            text-decoration: none !important;
+            font-weight: 600 !important;
+            transition: color 0.3s ease !important;
+        }
+
+        .designed-text a:hover {
+            color: #bd1819 !important;
+        }
+
+        /* Giant Animated Text Section */
+        .footer-big-text-row {
+            margin-top: 60px !important;
+            padding: 100px 0 !important; /* Spacious padding for gradient */
+            text-align: center !important;
+            user-select: none;
+            pointer-events: none;
+            background: linear-gradient(to bottom, #ffffff 0%, #a31213 100%) !important;
+            width: 100% !important;
+        }
+
+        .footer-big-text-container {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            gap: 0 !important;
+        }
+
+        .footer-text-line {
+            display: flex !important;
+            justify-content: center !important;
+            gap: 0.5vw !important;
+        }
+
+        /* Responsive Media Queries */
+        @media (max-width: 991px) {
+            .footer-grid-card {
+                grid-template-columns: repeat(3, 1fr) !important;
+                padding: 30px !important;
+            }
+        }
+
+        @media (max-width: 575px) {
+            .footer-grid-card {
+                grid-template-columns: 1fr !important;
+                padding: 24px !important;
+                gap: 24px !important;
+            }
+            
+            .footer-copyright-card {
+                flex-direction: column !important;
+                text-align: center !important;
+                padding: 20px !important;
+            }
+            
+            .footer-logo-row {
+                text-align: center !important;
+            }
+        }
+    </style>
+
+    <style>
+    .qr-wrap{max-width:860px;margin:0 auto;padding:0 20px}
+    .qr-hero{padding:150px 0 32px;background:linear-gradient(180deg,#ffffff 0%,#f8fafc 100%)}
+    .qr-hero h1{font-size:clamp(29px,4vw,43px);line-height:1.16;font-weight:800;color:#111827;margin:0 0 16px}
+    .qr-sub{font-size:18px;color:#4b5563;line-height:1.65;margin:0}
+    .qr-meta{font-size:13px;color:#6b7280;margin-top:18px}
+    .qr-body{padding:36px 0 64px}
+    .qr-body h2{font-size:25px;font-weight:700;color:#111827;margin:42px 0 14px;line-height:1.25}
+    .qr-body h3{font-size:18px;font-weight:700;color:#111827;margin:26px 0 8px}
+    .qr-body p,.qr-body li{font-size:16px;line-height:1.75;color:#374151}
+    .qr-body ul,.qr-body ol{padding-left:22px;margin:0 0 16px}
+    .qr-body li{margin-bottom:8px}
+    .qr-body a{color:#bd1819;text-decoration:underline}
+    .qr-tldr{background:#fff7f7;border-left:4px solid #bd1819;padding:18px 22px;border-radius:8px;margin:26px 0}
+    .qr-tldr p{margin:0;font-size:16px}
+    .qr-table-wrap{overflow-x:auto;margin:24px 0;border:1px solid #e5e7eb;border-radius:10px}
+    .qr-table{width:100%;border-collapse:collapse;min-width:520px;font-size:14.5px}
+    .qr-table th,.qr-table td{padding:11px 14px;text-align:left;border-bottom:1px solid #e5e7eb}
+    .qr-table thead th{background:#f9fafb;font-weight:700;color:#111827}
+    .qr-table tbody td:first-child{font-weight:600;color:#111827}
+    .qr-table tbody tr:last-child td{border-bottom:none}
+    .qr-cta{background:#111827;border-radius:12px;padding:30px;margin:40px 0 0;text-align:center}
+    .qr-cta h2{color:#fff;margin:0 0 8px;font-size:23px}
+    .qr-cta p{color:#d1d5db;margin:0 0 20px}
+    .qr-btn{display:inline-block;background:#bd1819;color:#fff!important;text-decoration:none!important;padding:14px 28px;border-radius:8px;font-weight:700;font-size:16px}
+    .qr-faq{border-top:1px solid #e5e7eb;margin-top:12px;padding-top:4px}
+    .qr-faq h3{font-size:17px;margin:22px 0 6px}
+    .qr-faq p{margin:0}
+    .qr-related{border-top:1px solid #e5e7eb;margin-top:40px;padding-top:20px}
+    .qr-related ul{list-style:none;padding:0;display:flex;flex-wrap:wrap;gap:8px}
+    .qr-related li{margin:0}
+    .qr-related a{font-size:13.5px;background:#f3f4f6;color:#374151!important;padding:7px 13px;border-radius:999px;text-decoration:none!important;display:inline-block}
+    </style>
+</head>
+
+<body class="light">
+
+    <!-- Preloader removed because assets/js/app.js is missing -->
+
+
+
+
+    <header class="site-header site-header--menu-center zubuz-header-section" id="sticky-menu">
+        <div class="container">
+            <nav class="navbar site-navbar">
+                <!-- Brand Logo-->
+                <div class="brand-logo">
+                    <a href="https://makemyqrcode.com/">
+                        <img loading="eager" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code - Free QR Code Generator" class="light-version-logo">
+                    </a>
+                </div>
+                <div class="menu-block-wrapper">
+                    <div class="menu-overlay"></div>
+                    <nav class="menu-block" id="append-menu-header">
+                        <div class="mobile-menu-head">
+                            <div class="mobile-drawer-logo">
+                                <a href="https://makemyqrcode.com/">
+                                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code">
+                                </a>
+                            </div>
+                            <button type="button" class="mobile-menu-close" aria-label="Close Menu">&times;</button>
+                        </div>
+                        <ul class="site-menu-main">
+                            <li class="nav-item">
+                                <a href="/" class="nav-link-item">Home</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="about-qr-code-generator.html" class="nav-link-item">About Us</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="blog.html" class="nav-link-item">Blog</a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="privacy-policy-qr-code-tool.html" class="nav-link-item">Privacy Policy</a>
+                            </li>
+                            <li class="mobile-auth-btns">
+                                <a href="https://app.makemyqrcode.com/login" class="mobile-login-btn">Login</a>
+                                <a href="https://app.makemyqrcode.com/register" class="mobile-signup-btn">Sign Up</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="header-btn header-btn-l1 ms-auto d-none d-xs-inline-flex">
+                    <div class="zubuz-header-btn-wrap">
+                        <a class="zubuz-login-btn" href="https://makemyqrcode.com/" style="margin-right: 15px;">Home</a>
+                        <a class="zubuz-login-btn" href="about-qr-code-generator.html" style="margin-right: 15px;">About Us</a>
+                        <a class="zubuz-login-btn" href="blog.html" style="margin-right: 15px;">Blog</a>
+<a class="zubuz-login-btn" href="privacy-policy-qr-code-tool.html" style="margin-right: 15px;">Privacy Policy</a>
+                        <a class="zubuz-login-btn zubuz-login-btn-red" href="https://app.makemyqrcode.com/login"
+                            style="margin-right: 15px;">Login</a>
+                        <a class="zubuz-default-btn zubuz-header-btn" href="https://app.makemyqrcode.com/register">
+                            <span>Sign Up</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- ===== Visitor Counter ===== -->
+
+<!-- mobile menu trigger -->
+                <div id="mobile-menu-trigger" class="mobile-menu-trigger light">
+                    <span></span>
+                </div>
+                <!--/.Mobile Menu Hamburger Ends-->
+            </nav>
+        </div>
+
+
+    </header>
+    <section class="qr-hero">
+        <div class="qr-wrap">
+            <h1>How Do QR Codes Work?</h1>
+            <p class="qr-sub">A QR code is a grid of black and white squares that encodes data with enough redundancy to survive damage, dirt and a logo in the middle.</p>
+            <p class="qr-meta">Last updated: October 2026 &middot; Written by the Make My QR Code team</p>
+        </div>
+    </section>
+    <section class="qr-body">
+        <div class="qr-wrap">
+            <div class="qr-tldr"><p><strong>Short answer:</strong> a QR code stores data as a pattern of dark and light modules on a square grid. Finder patterns in three corners tell the scanner where the code is and how it is oriented. Error correction adds redundant data so the code still reads even when part of it is damaged, covered or dirty.</p></div>
+
+<h2>The parts of a QR code</h2>
+<ul>
+<li><strong>Finder patterns.</strong> The three large squares in the corners. They let a scanner locate the code at any angle and work out its rotation. The fourth corner is deliberately left without one, which tells the scanner which way is up.</li>
+<li><strong>Alignment patterns.</strong> Smaller squares inside larger codes that correct for perspective distortion when scanning at an angle or on a curved surface.</li>
+<li><strong>Timing patterns.</strong> Alternating lines connecting the finders that let the scanner measure the grid size.</li>
+<li><strong>Format information.</strong> Two copies of a small strip that record the error-correction level and the mask pattern in use.</li>
+<li><strong>Data and error-correction modules.</strong> The rest of the grid, holding your encoded content plus redundant recovery data.</li>
+<li><strong>Quiet zone.</strong> The blank margin around the code. Without it, scanners cannot distinguish code from background.</li>
+</ul>
+
+<h2>Error correction: why a logo does not break the code</h2>
+<p>QR codes use Reed&ndash;Solomon error correction, which stores recovery data alongside the payload. There are four levels, and they determine how much of the code can be lost:</p>
+<div class="qr-table-wrap">
+<table class="qr-table">
+<thead><tr><th>Level</th><th>Recoverable damage</th><th>Typical use</th></tr></thead>
+<tbody>
+<tr><td>L (Low)</td><td>~7%</td><td>Clean digital display, maximum data</td></tr>
+<tr><td>M (Medium)</td><td>~15%</td><td>General print default</td></tr>
+<tr><td>Q (Quartile)</td><td>~25%</td><td>Print with some wear, small logo</td></tr>
+<tr><td>H (High)</td><td>~30%</td><td>Logo overlay, harsh environments</td></tr>
+</tbody>
+</table>
+</div>
+<p>This is the mechanism behind logo embedding. A logo covering up to about 30% of the code can still scan &mdash; but only at level H, and only if the logo sits away from the three finder patterns. It is also why a scuffed or partially covered code often still works.</p>
+
+<h2>How much data fits</h2>
+<div class="qr-table-wrap">
+<table class="qr-table">
+<thead><tr><th>Data type</th><th>Maximum (approx.)</th></tr></thead>
+<tbody>
+<tr><td>Numeric</td><td>7,089 characters</td></tr>
+<tr><td>Alphanumeric</td><td>4,296 characters</td></tr>
+<tr><td>Binary / bytes</td><td>2,953 characters</td></tr>
+<tr><td>Japanese kanji</td><td>1,817 characters</td></tr>
+</tbody>
+</table>
+</div>
+<p>These maximums apply at error-correction level L on the largest grid size. In practice, keep payloads short: every extra character adds modules, and more modules at a fixed print size means smaller physical dots and a higher chance of a failed scan.</p>
+
+<h2>What happens when you scan one</h2>
+<ol>
+<li>The camera locates the three finder patterns and works out orientation and perspective.</li>
+<li>It samples the grid and converts each module to a bit.</li>
+<li>It reads the format information to learn the error-correction level and mask.</li>
+<li>It applies the mask to unmix the data, then uses Reed&ndash;Solomon to repair any errors.</li>
+<li>It interprets the decoded bytes using the mode indicator &mdash; URL, text, vCard, Wi-Fi and so on.</li>
+<li>The operating system decides which app to open for that data type.</li>
+</ol>
+
+<h2>Why codes fail to scan</h2>
+<p>Almost always one of these: too small, too little contrast, no quiet zone, printed on a curved or reflective surface, damaged beyond the error-correction budget, or a payload so dense that the modules blur together at the printed size. Notice that none of these are software faults &mdash; they are design and print decisions.</p>
+
+            <h2>Frequently asked questions</h2>
+            <div class="qr-faq">
+<h3>How much data can a QR code hold?</h3><p>Up to about 7,089 numeric characters or 4,296 alphanumeric characters at the lowest error-correction level. Practical codes hold far less to stay scannable at small sizes.</p>
+<h3>Can a QR code work without internet?</h3><p>The scan itself works offline because decoding happens on the phone. If the code points at a website, that page still needs a connection.</p>
+<h3>Why are there three squares in the corners?</h3><p>They are finder patterns. Three are enough to determine position, size and rotation, and leaving the fourth corner empty tells the scanner which way is up.</p>
+<h3>How much of a QR code can be damaged and still scan?</h3><p>Up to 30% at error-correction level H, provided the three finder patterns remain intact.</p>
+<h3>Are QR codes safe to scan?</h3><p>Generally yes, but a code can point anywhere. Preview the destination before opening it, and be cautious with codes on stickers pasted over legitimate ones.</p>
+            </div>
+            <div class="qr-cta">
+                <h2>Create a free QR code</h2>
+                <p>Any content type, high-resolution PNG or SVG, no account needed.</p>
+                <a class="qr-btn" href="/">Create a free QR code</a>
+            </div>
+            <div class="qr-related">
+                <h2 style="font-size:19px;margin:0 0 12px">Related guides</h2>
+                <ul>
+<li><a href="/do-qr-codes-expire.html">Do QR codes expire?</a></li>
+<li><a href="/qr-code-size-for-print.html">QR code size for print</a></li>
+<li><a href="/qr-code-for-wifi.html">Wi-Fi QR code</a></li>
+<li><a href="/static-vs-dynamic-qr-codes.html">Static vs dynamic</a></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+<footer class="custom-premium-footer">
+        <div class="container">
+            <!-- Logo Row -->
+            <div class="footer-logo-row">
+                <a href="https://makemyqrcode.com/">
+                    <img loading="lazy" decoding="async" width="300" height="66" src="images/logo/make-my-qr-code-300.webp" alt="Make My QR Code" class="footer-logo-img">
+                </a>
+            </div>
+
+            <!-- Grid Card Container (Rounded Square style) -->
+            <div class="footer-grid-card">
+                <div class="footer-column">
+                    <h4>Navigation</h4>
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about-qr-code-generator.html">About Us</a></li>
+                        <li><a href="blog.html">Blog</a></li>
+                        <li><a href="about-qr-code-generator.html#faq">FAQs</a></li>
+                        <li><a href="compare-qr-code-generators.html">Compare</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Documentation</h4>
+                    <ul>
+                        <li><a href="privacy-policy-qr-code-tool.html">Privacy Policy</a></li>
+                        <li><a href="privacy-policy-qr-code-tool.html#terms">T & C</a></li>
+                        <li><a href="https://app.makemyqrcode.com/login">Pricing</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Social Connects</h4>
+                    <ul>
+                        <li><a href="https://www.facebook.com/makemyqrcodeapp" target="_blank" rel="noopener"><i
+                                    class="fab fa-facebook"></i> Facebook</a></li>
+                        <li><a href="https://instagram.com/makemyqrcodeapp" target="_blank" rel="noopener"><i
+                                    class="fab fa-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright Row Card Container (Rounded Square style) -->
+            <div class="footer-copyright-card">
+                <span class="copyright-text">&copy; Copyright 2026, All Rights Reserved by MakeMyQRCode</span>
+                <span class="designed-text">Designed by <a href="https://blueglobtech.com/" target="_blank"
+                        rel="noopener">Blue Global Technology</a></span>
+            </div>
+        </div>
+
+        <!-- Giant Animated Text Block -->
+        <div class="footer-big-text-row">
+            <div class="footer-big-text-container">
+
+                <!-- Line 1: GET STARTED -->
+                <div class="footer-text-line">
+                    <div style="display: flex;">
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                G</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                E</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                T</h2>
+                        </div>
+                    </div>
+                    <div style="width: 3vw;"></div>
+                    <div style="display: flex;">
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                S</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                T</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                A</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                R</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                T</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                E</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                D</h2>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Line 2: WITH US -->
+                <div class="footer-text-line">
+                    <div style="display: flex;">
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                W</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                I</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                T</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                H</h2>
+                        </div>
+                    </div>
+                    <div style="width: 3vw;"></div>
+                    <div style="display: flex;">
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                U</h2>
+                        </div>
+                        <div class="footer-title-letter-block" style="overflow: hidden;">
+                            <h2 class="heading-style-h1 footer-large-title"
+                                style="will-change: transform; transform: translate3d(0, 110%, 0); font-size: 10vw; line-height: 1; font-weight: 900; text-transform: uppercase; color: #111827; margin: 0; opacity: 0;">
+                                S</h2>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+
+
+
+    <!-- scripts -->
+
+
+
+    <script src="js/index.js?v=20261021f"></script>
+    <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "How Do QR Codes Work? Structure, Error Correction & Capacity",
+  "url": "https://makemyqrcode.com/how-do-qr-codes-work.html",
+  "description": "How a QR code is built: finder patterns, data modules, error correction levels and capacity. Why logos work, and why some codes fail to scan.",
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Make My QR Code",
+    "url": "https://makemyqrcode.com/"
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Make My QR Code",
+    "url": "https://makemyqrcode.com/"
+  },
+  "dateModified": "2026-10-21"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://makemyqrcode.com/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Guides",
+      "item": "https://makemyqrcode.com/blog.html"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "How Do QR Codes Work?",
+      "item": "https://makemyqrcode.com/how-do-qr-codes-work.html"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {
+      "@type": "Question",
+      "name": "How much data can a QR code hold?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Up to about 7,089 numeric characters or 4,296 alphanumeric characters at the lowest error-correction level. Practical codes hold far less to stay scannable at small sizes."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Can a QR code work without internet?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "The scan itself works offline because decoding happens on the phone. If the code points at a website, that page still needs a connection."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Why are there three squares in the corners?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "They are finder patterns. Three are enough to determine position, size and rotation, and leaving the fourth corner empty tells the scanner which way is up."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "How much of a QR code can be damaged and still scan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Up to 30% at error-correction level H, provided the three finder patterns remain intact."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "Are QR codes safe to scan?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "Generally yes, but a code can point anywhere. Preview the destination before opening it, and be cautious with codes on stickers pasted over legitimate ones."
+      }
+    }
+  ]
+}
+</script>
+</body>
+
+</html>

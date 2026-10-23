@@ -1,46 +1,27 @@
-# Force HTTPS
-RewriteEngine On
-RewriteCond %{HTTPS} off
-RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1 [L,R=301]
-
-# Redirect www to non-www
-RewriteCond %{HTTP_HOST} ^www\.makemyqrcode\.com [NC]
-RewriteRule ^(.*)$ https://makemyqrcode.com/$1 [L,R=301]
-
-# Redirect index.html to root
-RewriteCond %{THE_REQUEST} \.html
-RewriteRule ^(.*?)index\.html$ /$1 [L,R=301]
-
-# Custom error pages
-ErrorDocument 404 /404.html
-ErrorDocument 502 /502.html
-
-# Gzip / Deflate compression
-AddOutputFilterByType DEFLATE text/html text/plain text/xml text/css text/javascript application/javascript application/json application/xml application/x-javascript
-
-# Browser caching
-<IfModule mod_expires.c>
-  ExpiresActive On
-  ExpiresByType text/html "access plus 1 hour"
-  ExpiresByType image/png "access plus 1 year"
-  ExpiresByType image/jpg "access plus 1 year"
-  ExpiresByType image/jpeg "access plus 1 year"
-  ExpiresByType image/svg+xml "access plus 1 year"
-  ExpiresByType image/webp "access plus 1 year"
-  ExpiresByType image/x-icon "access plus 1 year"
-  ExpiresByType text/css "access plus 1 month"
-  ExpiresByType font/woff2 "access plus 1 year"
-  ExpiresByType application/javascript "access plus 1 month"
-</IfModule>
-
-# Security headers
-<IfModule mod_headers.c>
-  Header set X-Content-Type-Options "nosniff"
-  Header set X-Frame-Options "SAMEORIGIN"
-  Header set Referrer-Policy "strict-origin-when-cross-origin"
-  Header set Permissions-Policy "camera=(), microphone=(), geolocation=()"
-</IfModule>
-
-# Security
-Options -Indexes
-ServerSignature Off
+# ---------------------------------------------------------------------------
+#  This site runs on nginx (BT / aaPanel). Apache .htaccess files are
+#  IGNORED by nginx - nothing in this file has any effect.
+#
+#  The real rules live in the nginx vhost:
+#      /www/server/panel/vhost/nginx/makemyqrcode.com.conf
+#
+#  A ready-to-paste copy of the SEO / caching rules is kept in:
+#      deploy/nginx-makemyqrcode.conf
+#
+#  Already handled by the vhost (do not duplicate here):
+#      - http  -> https          301
+#      - www   -> non-www        301
+#      - gzip compression
+#      - custom 404 / 502 pages
+#      - directory listing 403
+#      - HSTS, X-Content-Type-Options, X-Frame-Options, Referrer-Policy
+#      - css/js/image cache lifetimes
+#
+#  Still to be added to the vhost (see deploy/nginx-makemyqrcode.conf):
+#      - /index.html      -> /                      301
+#      - /foo.html/       -> /foo.html              301
+#      - Cache-Control on HTML responses
+#      - Permissions-Policy header
+#      - X-Robots-Tag noindex on /counter.php
+#      - immutable caching for .webp / .woff2
+# ---------------------------------------------------------------------------
