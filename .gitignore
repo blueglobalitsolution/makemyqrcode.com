@@ -12,3 +12,7 @@ package-lock.json
 goose-aeo.db
 pricing.json
 .agents/
+
+# Python bytecode
+__pycache__/
+*.pyc
